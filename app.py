@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
@@ -13,13 +13,14 @@ app.config["MYSQL_VERSION"] = 8.0
 
 mysql = MySQL(app)
 
+# HOMEPAGE
 @app.route("/")
 def homepage():
     return render_template("index.html")
 
-@app.route("/endpoint", methods=["GET"])
-def hello_world():
-    # return render_template("index.html")
+# TAKING ALL DATA
+@app.route("/colleges", methods=["GET"])
+def get_data():
     conn = mysql.connection
     cur = conn.cursor()
     cur.execute("SELECT * FROM colleges")
@@ -27,8 +28,83 @@ def hello_world():
     cur.close()
     return jsonify(all_data)
 
+# DELETING DATA
+@app.route('/colleges', methods=['DELETE'])
+def delete_record():
+    
+    conn = mysql.connection
+    cur = conn.cursor()
+    id = int(request.args.get('id'))
+    cur.execute(f"Delete from colleges WHERE college_id = {id}")
+
+    conn.commit()
+    cur.close()
+
+    return {"result": "Record deleted Succesfully"}
+
+# INSERTING DATA
+@app.route('/colleges', methods=['POST'])
+def insert_record():
+
+    data = request.get_json()
+    conn = mysql.connection
+    cur = conn.cursor()
+
+    college_id = data["college_id"]
+    name = data["name"]
+    address = data["address"]
+    placement_ratio = data["placement_ratio"]
+    average_pakage = data["average_pakage"]
+    cut_off = data["cut_off"]
+    website = data["website"]
+    autonomous = data["autonomous"]
+    ranking = data["ranking"]
+
+    cur.execute(f"INSERT INTO colleges (college_id, name, address, placement_ratio, average_pakage, cut_off, website, autonomous, ranking) VALUES ('{college_id}', '{name}', '{address}', '{placement_ratio}', '{average_pakage}', '{cut_off}', '{website}', '{autonomous}', '{ranking}')")
+    conn.commit()
+    cur.close()
+
+    return {"result": "Record inserted Succesfully"}
+
+# UPDATING DATA
+@app.route('/colleges', methods=['PUT'])
+def update_record():
+
+    data = request.get_json()
+    conn = mysql.connection
+    cur = conn.cursor()
 
 
+    college_id = data["college_id"]
+    name = data["name"]
+    address = data["address"]
+    placement_ratio = data["placement_ratio"]
+    average_pakage = data["average_pakage"]
+    cut_off = data["cut_off"]
+    website = data["website"]
+    autonomous = data["autonomous"]
+    ranking = data["ranking"]
+
+    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_pakage}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
+    cur = conn.cursor()
+    
+    conn.commit()
+    return {"result": "Record updated Succesfully"}
+
+# SORTING DATA  // krishna pandey return a 2 keys is json format first is attribute(in which attribute you want sorting on) and second is sorting type(ASC, DESC)
+@app.route("/colleges/sorting", methods=["GET"])
+def sort_data():
+
+    data = request.get_json()
+    conn = mysql.connection
+    cur = conn.cursor()
+
+    attribute = [data[key] for key in data]
+
+    cur.execute(f"SELECT * FROM colleges ORDER BY {attribute[0]} {attribute[1]}")
+    all_data = cur.fetchall()
+    cur.close()
+    return jsonify(all_data)
 
 
 if __name__ == "__main__":

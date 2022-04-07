@@ -27,8 +27,8 @@ function loadData(records = []) {
 	document.getElementById("tbody").innerHTML = table_data;
 }
 
-function getColleges() {
-	fetch(api_url)
+function getColleges(sortBy,sortType) {
+	fetch(`${api_url}?sortBy=${sortBy}?sortType=${sortType}`)
 	.then((response) => response.json())
 	.then((data) => {
 		console.table(data); 

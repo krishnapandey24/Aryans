@@ -90,7 +90,7 @@ def update_record():
     conn.commit()
     return {"result": "Record updated Succesfully"}
 
-# SORTING DATA  // krishna pandey return a 2 keys is json format first is attribute(in which attribute you want sorting on) and second is sorting type(ASC, DESC)
+# SORTING DATA  
 @app.route("/colleges/sorted", methods=['GET'])
 def sort_data():
     conn = mysql.connection

@@ -92,12 +92,11 @@ def update_record():
 
 @app.route("/colleges/sorted", methods=['GET'])
 def sort_data():
-    data = request.get_json()
     conn = mysql.connection
     cur = conn.cursor()
-    sortBy=str(request.args.get('sortBy'))
-    sortType=str(request.args.get('sortType'))
-    cur.execute(f"SELECT * FROM colleges ORDER BY {sortBy} {sortType}")
+    sort_by = str(request.args.get('sortBy'))
+    sort_type = str(request.args.get('sortType'))
+    cur.execute(f"SELECT * FROM colleges ORDER BY {sort_by} {sort_type}")
     all_data = cur.fetchall()
     cur.close()
     return jsonify(all_data)

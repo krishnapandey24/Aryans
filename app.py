@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, render_template, request
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app)
 
 app.config["MYSQL_DB"] = "blqi2cak5js1pb0qha6p"
 app.config["MYSQL_HOST"] = "blqi2cak5js1pb0qha6p-mysql.services.clever-cloud.com"

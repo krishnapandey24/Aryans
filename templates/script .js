@@ -1,5 +1,7 @@
 import fetch from "node-fetch";
+
 const api_url = "http://127.0.0.1:5000/colleges/sorted"
+
 
 getColleges("college_id","ASC")
 
@@ -31,22 +33,9 @@ function loadData(records = []) {
 }
 
 function getColleges(sortBy,sortType) {
-	fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`, {
-		method: "GET",
-		headers: {
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		},
-	})
-	.then((response) => {
-		console.log(response.text)
-		response.json();
-
-	})
-		.then((data) => {
-			console.log(data); 
-		
-		})
+	fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`)
+	.then((response) => response.json())
+	.then((data) => loadData(data))		
 }
 
 

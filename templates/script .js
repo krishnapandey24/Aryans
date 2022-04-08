@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-const api_url = "http://127.0.0.1:5000/getSort"
+const api_url = "http://127.0.0.1:5000/colleges/sorted"
 
 getColleges("college_id","ASC")
 

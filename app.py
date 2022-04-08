@@ -93,7 +93,6 @@ def update_record():
 # SORTING DATA  // krishna pandey return a 2 keys is json format first is attribute(in which attribute you want sorting on) and second is sorting type(ASC, DESC)
 @app.route("/colleges/sorted", methods=['GET'])
 def sort_data():
-    data = request.get_json()
     conn = mysql.connection
     cur = conn.cursor()
     sortBy=str(request.args.get('sortBy'))

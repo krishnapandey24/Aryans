@@ -28,12 +28,34 @@ function loadData(records = []) {
 }
 
 function getColleges(sortBy,sortType) {
+<<<<<<< HEAD
 	fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`)
 	.then((response) => response.json())
 	.then((data) => {
 		console.table(data); 
 		loadData(data);
 	});
+=======
+	// fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`)
+	// .then((response) => response.json())
+	// .then((data) => {
+	// 	console.table(data); 
+	// 	loadData(data);
+	// });
+	data={
+		sortBy: sortBy,
+		sortType: sortType
+	}
+	console.log(`Json: ${JSON.stringify(data)}`)
+	fetch(api_url, {
+		method: "GET",
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data)
+	})
+>>>>>>> krishna
 }
 
 

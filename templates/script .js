@@ -1,4 +1,7 @@
-const api_url = ""
+import fetch from "node-fetch";
+const api_url = "http://127.0.0.1:5000/getSort"
+
+getColleges("college_id","ASC")
 
 function loadData(records = []) {
 	var table_data = "";
@@ -28,19 +31,22 @@ function loadData(records = []) {
 }
 
 function getColleges(sortBy,sortType) {
-	data={
-		sortBy: sortBy,
-		sortType: sortType
-	}
-	console.log(`Json: ${JSON.stringify(data)}`)
-	fetch(api_url, {
+	fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`, {
 		method: "GET",
 		headers: {
 		  'Accept': 'application/json',
 		  'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data)
 	})
+	.then((response) => {
+		console.log(response.text)
+		response.json();
+
+	})
+		.then((data) => {
+			console.log(data); 
+		
+		})
 }
 
 
@@ -61,6 +67,7 @@ function getCollegesById(id) {
 		document.getElementById("ranking").value = data[0][8];
 		document.getElementById("rating").value = data[0][9];
 	})
+
 }
 
 function addCollege(){
@@ -143,8 +150,6 @@ function editCollege(id){
 }
 
 function deleteData(id) {
-	user_input = confirm(`Are you sure you want to delete this record?`);
-	if(user_input) {
 		fetch(`${api_url}?id=${id}`, {
 			method: "DELETE",
 			headers: {
@@ -156,8 +161,7 @@ function deleteData(id) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data); 
-			window.location.href = "index.html";
+			// window.location.href = "index.html";
 		})
 	}
-	window.location.href = "index.html";	
-}
+	// window.location.href = "index.html";	

@@ -31,7 +31,6 @@ def get_data():
 # DELETING DATA
 @app.route('/colleges', methods=['DELETE'])
 def delete_record():
-    
     conn = mysql.connection
     cur = conn.cursor()
     id = int(request.args.get('id'))
@@ -92,16 +91,14 @@ def update_record():
     return {"result": "Record updated Succesfully"}
 
 # SORTING DATA  // krishna pandey return a 2 keys is json format first is attribute(in which attribute you want sorting on) and second is sorting type(ASC, DESC)
-@app.route("/colleges/sorting", methods=["GET"])
+@app.route("/colleges/sorted", methods=['GET'])
 def sort_data():
-
     data = request.get_json()
     conn = mysql.connection
     cur = conn.cursor()
-
-    attribute = [data[key] for key in data]
-
-    cur.execute(f"SELECT * FROM colleges ORDER BY {attribute[0]} {attribute[1]}")
+    sortBy=str(request.args.get('sortBy'))
+    sortType=str(request.args.get('sortType'))
+    cur.execute(f"SELECT * FROM colleges ORDER BY {sortBy} {sortType}")
     all_data = cur.fetchall()
     cur.close()
     return jsonify(all_data)

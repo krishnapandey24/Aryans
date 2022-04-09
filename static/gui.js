@@ -7,8 +7,12 @@ const title=document.getElementById("title");
 const row=document.querySelectorAll("td");
 const logLogo=document.querySelector(".logout>i");
 const table=document.getElementById("myTable");
-const form=document.getElementById("form");
+const eform=document.getElementById("editForm");
+const cform=document.getElementById("createForm");
 const sort=document.getElementById("sort");
+const alter=document.querySelectorAll("tr:nth-child(even)>td");
+const tip=document.querySelectorAll(".tipText");
+
 
 function changeMode(){
    const dark=document.querySelector("#dark:checked")!= null;
@@ -25,6 +29,12 @@ function changeMode(){
            element.style.backgroundColor="rgb(95, 95, 95)";
            element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
        });
+        alter.forEach(element=>{
+            element.style.backgroundColor="rgb(77, 76, 76)";
+        });
+        tip.forEach(element => {
+            element.style.backgroundColor="rgb(26, 26, 26)";
+        });
        logLogo.style.color="white";
    }
    else{
@@ -40,21 +50,35 @@ function changeMode(){
         element.style.backgroundColor="rgb(230, 230, 230)";
         element.style.borderBottom="4px solid rgb(221, 221, 221)";
     });
+    alter.forEach(element=>{
+        element.style.backgroundColor="rgb(225, 222, 222)";
+    });
+    tip.forEach(element => {
+        element.style.backgroundColor="rgb(103, 103, 103)";
+    });
     logLogo.style.color="rgb(148, 148, 148)";
-
    }
 }
  function redirectToUpdate(){
          title.innerText="Update";
          table.style.display="none";
-         form.style.display="block";
+         eform.style.display="block";
          sort.style.display="none";
          content.style.overflowX="none";
  }
+ function redirectToCreate(){
+    title.innerText="Add Data";
+    table.style.display="none";
+    cform.style.display="block";
+    eform.style.display="none";
+    sort.style.display="none";
+    content.style.overflowX="none";
+}
  function redirectToTable(){
     title.innerText="DashBoard";
     table.style.display="block";
-    form.style.display="none";
+    eform.style.display="none";
+    cform.style.display="none";
     sort.style.display="block";
     content.style.overflowX="scroll";
 }

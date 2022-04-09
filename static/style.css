@@ -9,6 +9,10 @@
 }
 a{
     cursor: pointer;
+    color: rgb(61, 201, 236);
+}
+i{
+    cursor: pointer;
 }
 input{
     caret-color: black;
@@ -33,9 +37,9 @@ header{
 .sideBar{
     z-index:2;
     display: grid;
-    grid-template-rows:1fr 1fr 7fr 1fr ;
-    align-items: center;
-    justify-items:center;
+    grid-template-rows:1fr 1fr 1fr 7fr 1fr ;
+    align-items:center;
+    justify-items:start;
     position: fixed;
     width:20vw;
     height:94vh;
@@ -45,17 +49,31 @@ header{
     backdrop-filter:blur(10px);
     box-shadow: 0px 20px 32px 0px rgb(60, 60, 60);
 }
+.sideBar >div{
+    margin-left: 1vw;
+}
+.sideBar >div>div{
+   padding: 2vh 2vw;
+}
+.sideBar >div>b{
+    color: rgb(18, 111, 177);
+ }
 .welcome{
     /* border-bottom:2px solid grey ; */
-}
-.mode{
-   margin-left: -65px;
-   /* border-bottom:2px solid grey ; */
+    justify-self: center;
 
 }
+.add>div{
+    margin-left: 1vw;
+    width:2.5vw;
+    height:2.5vw;
+    border-radius:50%;
+}
+
 .logout{
     /* border-top:2px solid grey ; */
     cursor: pointer;
+    justify-self: center;
 }
 .logout>i{
     cursor: pointer;
@@ -127,7 +145,6 @@ input:checked + .slider {
    left:25vw ;
    box-shadow: 0px 20px 40px 0px rgb(60, 60, 60);
    width:70vw;
-   min-height:78vh;
    backdrop-filter:blur(10px);
    background-color: rgba(221, 221, 221, 0.729); /*rgba(221, 221, 221, 0.729)*/
    border: 2px solid rgba(252, 250, 250, 0.422); /*rgba(252, 250, 250, 0.422)*/
@@ -145,13 +162,14 @@ input:checked + .slider {
 .myTable tr{
     height: 2vh;
 }
+.myTable tr:nth-child(even)> td{
+    background-color: rgb(225, 222, 222);
+}
 /* .myTable tr:hover >td{
     overflow: visible;
     white-space: unset;
 } */
-abbr[title]{
-    text-decoration: none;
-}
+
 .myTable td{
     box-sizing: content-box;
     max-width: 4vw;
@@ -168,12 +186,14 @@ abbr[title]{
     display: block;
     position: absolute;
     visibility: hidden;
-    height: 20px;
+    word-wrap: break-word;
+    white-space: pre-line;
+    max-width: 19vw;
     border-radius:5px;
-    margin-top: 2px;
+    margin-top: 5px;
     margin-left: -5vw;
     z-index: 4;
-    background-color: black;
+    background-color: rgb(103, 103, 103);
     color: aliceblue;
     padding: 2px 4px;
 }
@@ -181,10 +201,10 @@ abbr[title]{
     content: "";
     position: absolute;
     bottom: 100%;
-    left:40%;
+    left:45%;
     border-width:5px;
     border-style: solid;
-    border-color:transparent transparent black transparent;
+    border-color:transparent transparent rgb(103, 103, 103) transparent;
 }
 .toolTip:hover .tipText{
     visibility: visible;
@@ -192,7 +212,7 @@ abbr[title]{
 /* action bottons */
 .button{
     text-align: center;
-    display:block;
+    display:inline-block;
     cursor: pointer;
     width:8vw ;
     height:2.5vw;
@@ -208,7 +228,7 @@ abbr[title]{
    background-color: red;
 }
 .primary{
-    background-color: rgb(101, 101, 234);
+    background-color: rgb(71, 105, 224);
 }
 .form{
     display: none;

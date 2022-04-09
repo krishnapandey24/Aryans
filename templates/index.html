@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- <link rel="stylesheet" href="mobile.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
 
 </head>
 <body>
@@ -18,7 +18,15 @@
     </header>
     <div class="sideBar" id="sideBar">
         <div class="welcome">Welcome...Admin</div>
-        <div class="mode">Mode <input  class="check" type="checkbox" id="dark" onclick="changeMode()"><span class="slider"></span></div>
+        <div>
+            <b>ACTIONS</b>
+            <div class="add">Add Data<div class="button" onclick="redirectToCreate()">+</div></div>
+            
+        </div>
+        <div>
+            <b>PERSNALISE</b>
+            <div class="mode">Mode <input  class="check" type="checkbox" id="dark" onclick="changeMode()"><span class="slider"></span></div>
+            </div>
         <div></div>
         <div class="logout"><i class="fa fa-sign-out" style="font-size:25px;color:rgb(60, 59, 59)"></i>Logout</div>
 
@@ -36,11 +44,14 @@
             <option value="cutoff">Cutoff</option>
             <option value="website">Website</option>
             <option value="rank">Rank</option>
-
         </select>
+        <label for="asc"><b>Asc</b></label>
+        <input type="checkbox" name="asc" id="">
+        <label for="desc"><b>Desc</b></label>
+        <input type="checkbox" name="desc" id="">
     </div>
     <div class="content" id="content">
-        <div class="form" id="form">
+        <div class="form" id="editForm">
             <label for="collegeId">CollegeId</label><br>
             <input type="text" name="collegeId" id=""><br>
             <label for="address">Address</label><br>
@@ -55,9 +66,26 @@
             <input type="text" name="websiteUrl" id=""><br>
             <label for="autonomous">Autonomous</label><br>
             <input type="text" name="autonomous" id=""><br><br>
-            <div class="button primary" onclick="redirectToTable()">Update</div><br>
+            <div class="button primary" onclick="redirectToTable()">Update</div>
            <div class="button delete" onclick="redirectToTable()">Cancel</div>
-
+        </div>
+        <div class="form" id="createForm">
+            <label for="collegeId">CollegeId</label><br>
+            <input type="text" name="collegeId" id=""><br>
+            <label for="address">Address</label><br>
+            <input type="text" name="address" id=""><br>
+            <label for="placementRatio">Placement Ratio</label><br>
+            <input type="text" name="placementRatio" id=""><br>
+            <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+            <input type="text" name="averagePakage" id=""><br>
+            <label for="cutoff">Cutoff</label><br>
+            <input type="text" name="cutoff" id=""><br>
+            <label for="websiteUrl">Website Url</label><br>
+            <input type="text" name="websiteUrl" id=""><br>
+            <label for="autonomous">Autonomous</label><br>
+            <input type="text" name="autonomous" id=""><br><br>
+            <div class="button primary" onclick="redirectToTable()">Add</div>
+           <div class="button delete" onclick="redirectToTable()">Cancel</div>
         </div>
         <table class="myTable" id="myTable">
            <thead>
@@ -77,12 +105,12 @@
             </thead>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip">Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -90,12 +118,12 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -103,12 +131,12 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -116,12 +144,12 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -129,12 +157,12 @@
             </tr>
             <tr>
                 <td>1</td>
-                <abbr title="Anjuman college of engineeering ,naagpur"><td> Anjuman college of engineeering ,naagpur</td></abbr>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -142,12 +170,12 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -155,12 +183,64 @@
             </tr>
             <tr>
                 <td>1</td>
-                <td><abbr title="Anjuman college of engineeering ,naagpur"> Anjuman college of engineeering ,naagpur</abbr></td>
-                <td><abbr title="sadar,nagpur">mangalwayr, sadar,nagpur</abbr></td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
                 <td>50 percent</td>
                 <td>4.5</td>
                 <td>70</td>
-                <td><abbr title=" www.acetacademics.com"><a href=" www.acetacademics.com">www.acetacademics.com</a></abbr></td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
+                <td>no</td>
+                <td>N/A</td>
+                <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
+                <td>50 percent</td>
+                <td>4.5</td>
+                <td>70</td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
+                <td>no</td>
+                <td>N/A</td>
+                <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
+                <td>50 percent</td>
+                <td>4.5</td>
+                <td>70</td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
+                <td>no</td>
+                <td>N/A</td>
+                <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="toolTip"> Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
+                <td>50 percent</td>
+                <td>4.5</td>
+                <td>70</td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
+                <td>no</td>
+                <td>N/A</td>
+                <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td class="toolTip">Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
+                <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
+                <td>50 percent</td>
+                <td>4.5</td>
+                <td>70</td>
+                <td class="toolTip"><a href=" www.acetacademics.com">www.acetacademics.com</a> <span class="tipText">www.acetacademics.com</span></td>
                 <td>no</td>
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
@@ -181,7 +261,6 @@
             </tr>
         </table>
     </div>
-    <script src="{{ url_for('static', filename='gui.js') }}"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="gui.js"></script>
 </body>
 </html>

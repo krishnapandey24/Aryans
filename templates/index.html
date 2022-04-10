@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header id="header">
+     <div class="logo">CollegeDb.Com</div>
+     <div class="menu"><i class="fa fa-navicon menu" style="font-size:28px; color:white"></i>
+     </div>
+    </header>
+    <div class="sideBar" id="sideBar">
+        <div class="welcome">Welcome...Admin</div>
+        <div class="mode">Mode <input  class="check" type="checkbox" id="dark" onclick="changeMode()"><span class="slider"></span></div>
+        <div></div>
+        <div class="logout"><i class="fa fa-sign-out" style="font-size:25px;color:rgb(60, 59, 59)"></i>Logout</div>
+
+    </div>
+    <div class="title" id="title">
+        DashBoard
+    </div>
+    <div id="sort">
+        <label for="select"><b>Sort By: </b></label>
+        <select name="select" id="select">
+            <option value="name">Name</option>
+            <option value="address">Address</option>
+            <option value="placementRatio">Placement Ratio</option>
+            <option value="averagePakage">Average Pakage</option>            <option value="name">Name</option>
+            <option value="cutoff">Cutoff</option>
+            <option value="website">Website</option>
+            <option value="rank">Rank</option>
+
+        </select>
+    </div>
+    <div class="content" id="content">
+        <div class="form" id="form">
+            <label for="collegeId">CollegeId</label><br>
+            <input type="text" name="collegeId" id=""><br>
+            <label for="address">Address</label><br>
+            <input type="text" name="address" id=""><br>
+            <label for="placementRatio">Placement Ratio</label><br>
+            <input type="text" name="placementRatio" id=""><br>
+            <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+            <input type="text" name="averagePakage" id=""><br>
+            <label for="cutoff">Cutoff</label><br>
+            <input type="text" name="cutoff" id=""><br>
+            <label for="websiteUrl">Website Url</label><br>
+            <input type="text" name="websiteUrl" id=""><br>
+            <label for="autonomous">Autonomous</label><br>
+            <input type="text" name="autonomous" id=""><br><br>
+            <div class="button primary" onclick="redirectToTable()">Update</div><br>
+           <div class="button delete" onclick="redirectToTable()">Cancel</div>
+
+        </div>
+        <table class="myTable" id="myTable">
+           <thead>
+            <tr> 
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Placement Ratio</th>
+                <th>Average Pakage</th>
+                <th>Cutoff</th>
+                <th>Website</th>
+                <th>Is Autonomus</th>
+                <th>Rank</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody id="tbody">
+			</tbody>
+        </table>
+    </div>
+</body>
+<script src="./script .js"></script>
+	<script>
+		getColleges("college_id","ASC")
+	</script>
+</html>

@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, render_template, request
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 
 app = Flask(__name__)
+cors = CORS(app)
 
 app.config["MYSQL_DB"] = "blqi2cak5js1pb0qha6p"
 app.config["MYSQL_HOST"] = "blqi2cak5js1pb0qha6p-mysql.services.clever-cloud.com"
@@ -53,7 +55,7 @@ def insert_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
-    average_pakage = data["average_pakage"]
+    average_pakage = data["average_package"]
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
@@ -78,7 +80,7 @@ def update_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
-    average_pakage = data["average_pakage"]
+    average_pakage = data["average_package"]
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
@@ -90,6 +92,7 @@ def update_record():
     conn.commit()
     return {"result": "Record updated Succesfully"}
 
+# SORTING DATA  
 @app.route("/colleges/sorted", methods=['GET'])
 def sort_data():
     conn = mysql.connection

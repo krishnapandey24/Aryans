@@ -1,9 +1,8 @@
-import fetch from "node-fetch";
-const api_url = "http://127.0.0.1:5000/"
-
-getColleges("college_id","ASC")
+import fetch from 'node-fetch'
+const api_url = "http://127.0.0.1:5000/colleges"
 
 function loadData(records = []) {
+	console.log(records)
 	var table_data = "";
 	for(let i=0; i<records.length; i++) {
 		table_data += `<tr>`;
@@ -17,21 +16,18 @@ function loadData(records = []) {
 		table_data += `<td>${records[i][6]}</td>`;
 		table_data += `<td>${records[i][7]}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;
-		table_data += `<td>${records[i][9]}</td>`;
-		
 		table_data += `<td>`;
 		table_data += `<a href="edit.html?id=${records[i][0]}"><button class="btn btn-primary">Edit</button></a>`;
 		table_data += '&nbsp;&nbsp;';
-		table_data += `<button class="btn btn-danger" onclick=deleteData('${records[i][0]}')>Delete</button>`;
+		table_data += `<button class="btn btn-danger">Delete</button>`;
 		table_data += `</td>`;
 		table_data += `</tr>`;
 	}
-	console.log(table_data);
 	document.getElementById("tbody").innerHTML = table_data;
 }
 
 function getColleges(sortBy,sortType) {
-	fetch(`${api_url}?sortBy=${sortBy}&sortType=${sortType}`)
+	fetch(`${api_url}colleges/sorted?sortBy=${sortBy}&sortType=${sortType}`)
 	.then((response) => response.json())
 	.then((data) => loadData(data))		
 }
@@ -57,85 +53,6 @@ function getCollegesById(id) {
 
 }
 
-function addCollege(){
-    var name= document.getElementById("name").value;
-    var address= document.getElementById("address").value;
-    var placementRatio= document.getElementById("pr").value;
-    var aveargePackage= document.getElementById("ap").value;
-    var cutoff= document.getElementById("cutoff").value;
-    var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
-	
-	data = {
-        name: name,
-        address: address,
-        placementRatio: placementRatio,
-        aveargePackage: aveargePackage,
-        cutoff: cutoff,
-        websiteUrl: url,
-        autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
-    };
-	
-	fetch(url, {
-		method: "POST",
-		headers: {
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data)
-	})
-	.then((response) => response.json())
-	.then((data) => { 
-		console.log(data); 
-		window.location.href = "index.html";
-	})
-
-}
-
-
-function editCollege(id){
-    var name= document.getElementById("name").value;
-    var address= document.getElementById("address").value;
-    var placementRatio= document.getElementById("pr").value;
-    var aveargePackage= document.getElementById("ap").value;
-    var cutoff= document.getElementById("cutoff").value;
-    var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
-	
-	data = {
-        name: name,
-        address: address,
-        placementRatio: placementRatio,
-        aveargePackage: aveargePackage,
-        cutoff: cutoff,
-        websiteUrl: url,
-        autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
-    };
-
-	fetch(api_url, {
-		method: "PUT",
-		headers: {
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	})
-	.then((response) => response.json())
-	.then((data) => { 
-		console.table(data);
-		window.location.href = "index.html";
-	})
-	
-}
-
 function deleteData(id) {
 		fetch(`${api_url}?id=${id}`, {
 			method: "DELETE",
@@ -152,3 +69,88 @@ function deleteData(id) {
 		})
 	}
 	// window.location.href = "index.html";	
+
+
+	
+function addCollege(){
+	var name= document.getElementById("name").value;
+    var address= document.getElementById("address").value;
+    var placementRatio= document.getElementById("pr").value;
+    var aveargePackage= document.getElementById("ap").value;
+    var cutoff= document.getElementById("cutoff").value;
+    var url= document.getElementById("url").value;
+    var autonomous= document.getElementById("autonomous").value;
+    var ranking= document.getElementById("ranking").value;
+    var rating= document.getElementById("rating").value;
+	let data = {
+		college_id:college_id,
+        name: name,
+        address: address,
+        placement_ratio: placementRatio,
+        average_package: aveargePackage,
+        cut_off: cutoff,
+        website: site,
+        autonomous: autonomous,
+        ranking: ranking,
+        rating: rating
+    };
+	
+	fetch(api_url, {
+		method: "POST",
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data)
+	})
+	.then((response) => response.json())
+	.then((data) => { 
+		console.log(data); 
+		// window.location.href = "index.html";
+	})
+
+}
+
+
+function editCollege(id){
+    var name= document.getElementById("name").value;
+    var address= document.getElementById("address").value;
+    var placementRatio= document.getElementById("pr").value;
+    var aveargePackage= document.getElementById("ap").value;
+    var cutoff= document.getElementById("cutoff").value;
+    var url= document.getElementById("url").value;
+    var autonomous= document.getElementById("autonomous").value;
+    var ranking= document.getElementById("ranking").value;
+    var rating= document.getElementById("rating").value;
+
+	let data = {
+		college_id:id,
+        name: name,
+        address: address,
+        placement_ratio: placementRatio,
+        average_package: aveargePackage,
+        cut_off: cutoff,
+        website: url,
+        autonomous: autonomous,
+        ranking: ranking,
+        rating: rating
+    };
+
+	fetch(api_url, {
+		method: "PUT",
+		headers: {
+		  'Accept': 'application/json',
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	})
+	.then((response) => response.json())
+	.then((data) => { 
+		console.table(data);
+		// window.location.href = "index.html";
+	})
+	
+}
+
+
+

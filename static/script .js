@@ -71,7 +71,7 @@ function deleteData(id) {
 	// window.location.href = "index.html";	
 
 
-	
+
 function addCollege(){
 	var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
@@ -81,7 +81,7 @@ function addCollege(){
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
     var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
+
 	let data = {
 		college_id:college_id,
         name: name,
@@ -89,10 +89,9 @@ function addCollege(){
         placement_ratio: placementRatio,
         average_package: aveargePackage,
         cut_off: cutoff,
-        website: site,
+        website: url,
         autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
+        ranking: ranking
     };
 	
 	fetch(api_url, {
@@ -111,8 +110,8 @@ function addCollege(){
 
 }
 
-
-function editCollege(id){
+function editCollege(){
+	// we need to pass id to edit perticuler college
     var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -121,10 +120,9 @@ function editCollege(id){
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
     var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
 
 	let data = {
-		college_id:id,
+		college_id:college_id,
         name: name,
         address: address,
         placement_ratio: placementRatio,
@@ -132,8 +130,7 @@ function editCollege(id){
         cut_off: cutoff,
         website: url,
         autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
+        ranking: ranking
     };
 
 	fetch(api_url, {

@@ -24,7 +24,8 @@ function changeMode(){
        content.style.border="2px solid rgb(148, 148, 148)";
        body.style.color="white";
        title.style.textShadow="0px 2px 10px black";
-       body.style.background="url("+"'blackback.jpg'"+")";
+       body.style.background="url("+"'/static/blackback.jpg'"+")";
+        //  body.style.backgroundImage="url({{ url_for('static',filename='/static/blackback.jpg')}})";
          row.forEach(element => {
            element.style.backgroundColor="rgb(95, 95, 95)";
            element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
@@ -45,7 +46,8 @@ function changeMode(){
     content.style.border="2px solid rgba(252, 250, 250, 0.422)";
     body.style.color="black";
     title.style.textShadow="0px 2px 10px rgb(91, 87, 87)";
-    body.style.background="url("+"'back.jpg'"+")";
+    body.style.background="url("+"'/static/back.jpg'"+")";
+    // body.style.backgroundImage="url({{ url_for('static',filename='/static/back.jpg')}})";
     row.forEach(element => {
         element.style.backgroundColor="rgb(230, 230, 230)";
         element.style.borderBottom="4px solid rgb(221, 221, 221)";

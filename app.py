@@ -51,15 +51,25 @@ def insert_record():
     conn = mysql.connection
     cur = conn.cursor()
 
-    college_id = data["college_id"]
-    name = data["name"]
-    address = data["address"]
-    placement_ratio = data["placement_ratio"]
-    average_pakage = data["average_pakage"]
-    cut_off = data["cut_off"]
-    website = data["website"]
-    autonomous = data["autonomous"]
-    ranking = data["ranking"]
+    # college_id = data["college_id"]
+    # name = data["name"]
+    # address = data["address"]
+    # placement_ratio = data["placement_ratio"]
+    # average_pakage = data["average_pakage"]
+    # cut_off = data["cut_off"]
+    # website = data["website"]
+    # autonomous = data["autonomous"]
+    # ranking = data["ranking"]
+
+    college_id = str(request.args.get('id'))
+    name =  str(request.args.get('name'))
+    address = str(request.args.get('address'))
+    placement_ratio = str(request.args.get('placementRatio'))
+    average_pakage =  str(request.args.get('aveargePackage'))
+    cut_off = str(request.args.get('sortBy'))
+    website = str(request.args.get('cutoff'))
+    autonomous = str(request.args.get('autonomous'))
+    ranking =  str(request.args.get('ranking'))
 
     cur.execute(f"INSERT INTO colleges (college_id, name, address, placement_ratio, average_pakage, cut_off, website, autonomous, ranking) VALUES ('{college_id}', '{name}', '{address}', '{placement_ratio}', '{average_pakage}', '{cut_off}', '{website}', '{autonomous}', '{ranking}')")
     conn.commit()
@@ -68,23 +78,33 @@ def insert_record():
     return {"result": "Record inserted Succesfully"}
 
 # UPDATING DATA
-@app.route('/colleges', methods=['PUT'])
+@app.route('/colleges/update', methods=['GET'])
 def update_record():
 
-    data = request.get_json()
+    # data = request.get_json()
     conn = mysql.connection
     cur = conn.cursor()
 
 
-    college_id = data["college_id"]
-    name = data["name"]
-    address = data["address"]
-    placement_ratio = data["placement_ratio"]
-    average_pakage = data["average_pakage"]
-    cut_off = data["cut_off"]
-    website = data["website"]
-    autonomous = data["autonomous"]
-    ranking = data["ranking"]
+    # college_id = data["college_id"]
+    # name = data["name"]
+    # address = data["address"]
+    # placement_ratio = data["placement_ratio"]
+    # average_pakage = data["average_pakage"]
+    # cut_off = data["cut_off"]
+    # website = data["website"]
+    # autonomous = data["autonomous"]
+    # ranking = data["ranking"]
+
+    college_id = str(request.args.get('id'))
+    name =  str(request.args.get('name'))
+    address = str(request.args.get('address'))
+    placement_ratio = str(request.args.get('placementRatio'))
+    average_pakage =  str(request.args.get('aveargePackage'))
+    cut_off = str(request.args.get('cutoff'))
+    website = str(request.args.get('url'))
+    autonomous = str(request.args.get('autonomous'))
+    ranking =  str(request.args.get('ranking'))
 
     cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_pakage}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
     cur = conn.cursor()

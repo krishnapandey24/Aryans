@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 const api_url = "http://127.0.0.1:5000/colleges/sorted"
 
@@ -7,29 +7,45 @@ getColleges("college_id","ASC")
 
 function loadData(records = []) {
 	var table_data = "";
+	    table_data=`
+		<thead>
+		<tr>
+		<th>Sr.No</th>
+		<th>Name</th>
+		<th>Address</th>
+		<th>Placement Ratio</th>
+		<th>Average Pakage</th>
+		<th>Cutoff</th>
+		<th>Website</th>
+		<th>Is Autonomus</th>
+		<th>Rank</th>
+		<th>Action</th>
+		</tr>
+		</thead>`;
 	for(let i=0; i<records.length; i++) {
 		table_data += `<tr>`;
 
 		table_data += `<td>${records[i][0]}</td>`;
-		table_data += `<td>${records[i][1]}</td>`;
-		table_data += `<td>${records[i][2]}</td>`;
+		table_data += `<td class="toolTip">${records[i][1]}  <span class="tipText">${records[i][1]}</span></td>`;
+		table_data += `<td class="toolTip">${records[i][2]}  <span class="tipText">${records[i][2]}</span></td>`;
 		table_data += `<td>${records[i][3]}</td>`;
 		table_data += `<td>${records[i][4]}</td>`;
 		table_data += `<td>${records[i][5]}</td>`;
-		table_data += `<td>${records[i][6]}</td>`;
+		table_data += `<td class="toolTip"><a href="${records[i][6]}">${records[i][6]}</a><span class="tipText">${records[i][6]}</span></td>`;
 		table_data += `<td>${records[i][7]}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;
-		table_data += `<td>${records[i][9]}</td>`;
+		table_data += `<td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate(${records[i][0]})"></i> &nbsp;&nbsp;&nbsp;
+		<i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>`;
 		
-		table_data += `<td>`;
-		table_data += `<a href="edit.html?id=${records[i][0]}"><button class="btn btn-primary">Edit</button></a>`;
-		table_data += '&nbsp;&nbsp;';
-		table_data += `<button class="btn btn-danger" onclick=deleteData('${records[i][0]}')>Delete</button>`;
-		table_data += `</td>`;
+		// table_data += `<td>`;
+		// table_data += `<a href="edit.html?id=${records[i][0]}"><button class="btn btn-primary">Edit</button></a>`;
+		// table_data += '&nbsp;&nbsp;';
+		// table_data += `<button class="btn btn-danger" onclick=deleteData('${records[i][0]}')>Delete</button>`;
+		// table_data += `</td>`;
 		table_data += `</tr>`;
 	}
 	console.log(table_data);
-	document.getElementById("tbody").innerHTML = table_data;
+	document.getElementById("myTable").innerHTML = table_data;
 }
 
 function getColleges(sortBy,sortType) {
@@ -68,7 +84,7 @@ function addCollege(){
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
     var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
+    // var rating= document.getElementById("rating").value;
 	
 	data = {
         name: name,
@@ -100,42 +116,49 @@ function addCollege(){
 
 
 function editCollege(id){
-    var name= document.getElementById("name").value;
-    var address= document.getElementById("address").value;
-    var placementRatio= document.getElementById("pr").value;
-    var aveargePackage= document.getElementById("ap").value;
-    var cutoff= document.getElementById("cutoff").value;
-    var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
+    var name= document.getElementById("cname").value;
+    var address= document.getElementById("caddress").value;
+    var placementRatio= document.getElementById("cpr").value;
+    var aveargePackage= document.getElementById("cap").value;
+    var cutoff= document.getElementById("ccutoff").value;
+    var url= document.getElementById("curl").value;
+    var autonomous= document.getElementById("cautonomous").value;
+    var ranking= document.getElementById("cranking").value;
+    // var rating= document.getElementById("crating").value;
 	
-	data = {
-        name: name,
-        address: address,
-        placementRatio: placementRatio,
-        aveargePackage: aveargePackage,
-        cutoff: cutoff,
-        websiteUrl: url,
-        autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
-    };
+	// data = {
+    //     name: name,
+    //     address: address,
+    //     placementRatio: placementRatio,
+    //     aveargePackage: aveargePackage,
+    //     cutoff: cutoff,
+    //     websiteUrl: url,
+    //     autonomous: autonomous,
+    //     ranking: ranking,
+        
+    // };
 
-	fetch(api_url, {
-		method: "PUT",
-		headers: {
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	})
-	.then((response) => response.json())
+	// fetch("http://127.0.0.1:5000/colleges/update", {
+	// 	method: "GET",
+	// 	headers: {
+	// 	  'Accept': 'application/json',
+	// 	  'Content-Type': 'application/json'
+	// 	},
+	// 	body: JSON.stringify(data)
+	// })
+	// .then((response) => response.json())
+	// .then((data) => { 
+	// 	console.table(data);
+	// 	window.location.href = "index.html";
+	// })
+	fetch(`"/colleges/update?id=${id}&name=${name}&address=${address}&placementRatio=${placementRatio}&aveargePackage=${aveargePackage}&cutoff=${cutoff}&url=${url}&autonomous=${autonomous}&ranking=${ranking}`).then((response) => response.json())
 	.then((data) => { 
-		console.table(data);
-		window.location.href = "index.html";
+		// console.table(data);
+		// window.location.href = "index.html";
 	})
-	
+	redirectToTable();
+
+
 }
 
 function deleteData(id) {

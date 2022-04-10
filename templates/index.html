@@ -40,7 +40,7 @@
             <option value="name">Name</option>
             <option value="address">Address</option>
             <option value="placementRatio">Placement Ratio</option>
-            <option value="averagePakage">Average Pakage</option>            <option value="name">Name</option>
+            <option value="averagePakage">Average Pakage</option>           
             <option value="cutoff">Cutoff</option>
             <option value="website">Website</option>
             <option value="rank">Rank</option>
@@ -51,27 +51,30 @@
         <input type="radio" name="oder" id="">
     </div>
     <div class="content" id="content">
-        <div class="form" id="editForm">
-            <label for="collegeId">CollegeId</label><br>
-            <input type="text" name="collegeId" id=""><br>
+        <div class="form" id="editForm" method="put">
+            <label for="name">Name</label><br>
+            <input type="text" name="name" id="cname"><br>
             <label for="address">Address</label><br>
-            <input type="text" name="address" id=""><br>
+            <input type="text" name="address" id="caddress"><br>
             <label for="placementRatio">Placement Ratio</label><br>
-            <input type="text" name="placementRatio" id=""><br>
+            <input type="text" name="placementRatio" id="cpr"><br>
             <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
-            <input type="text" name="averagePakage" id=""><br>
+            <input type="text" name="averagePakage" id="cap"><br>
             <label for="cutoff">Cutoff</label><br>
-            <input type="text" name="cutoff" id=""><br>
+            <input type="text" name="cutoff" id="ccutoff"><br>
             <label for="websiteUrl">Website Url</label><br>
-            <input type="text" name="websiteUrl" id=""><br>
+            <input type="text" name="websiteUrl" id="curl"><br>
             <label for="autonomous">Autonomous</label><br>
-            <input type="text" name="autonomous" id=""><br><br>
-            <div class="button primary" onclick="redirectToTable()">Update</div>
-           <div class="button delete" onclick="redirectToTable()">Cancel</div>
+            <input type="text" name="autonomous" id="cautonomous"><br>
+            <label for="rank">Rank</label><br>
+            <input type="text" name="rank" id="cranking"><br><br>
+            <div class="button primary"  id="updatebtn" >Update</div>
+           <div class="button delete"  id="deletebtn">Cancel</div>
+           <!-- <button type="submit" form="editForm" >lo</button> -->
         </div>
         <div class="form" id="createForm">
-            <label for="collegeId">CollegeId</label><br>
-            <input type="text" name="collegeId" id=""><br>
+            <label for="name">name</label><br>
+            <input type="text" name="name" id=""><br>
             <label for="address">Address</label><br>
             <input type="text" name="address" id=""><br>
             <label for="placementRatio">Placement Ratio</label><br>
@@ -103,7 +106,7 @@
 
             </tr>
             </thead>
-            <tr>
+            <!-- <tr>
                 <td>1</td>
                 <td class="toolTip">Anjuman college of engineeering ,naagpur  <span class="tipText">Anjuman college of engineeering ,naagpur ksjdf sjkdjlaksd  aksdjlam alksdjlak akjdlaks alksjdl alsjdl</span></td>
                 <td class="toolTip">mangalwayr, sadar,nagpur<span class="tipText">mangalwayr, sadar,nagpur</span></td>
@@ -258,9 +261,10 @@
                 <td>N/A</td>
                 <td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate()"></i> &nbsp;&nbsp;&nbsp;
                     <i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>
-            </tr>
+            </tr> -->
         </table>
     </div>
     <script src="{{ url_for('static', filename='gui.js') }}"></script>
+    <script src="{{ url_for('static', filename='script .js') }}"></script>
 </body>
 </html>

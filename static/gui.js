@@ -1,4 +1,5 @@
 
+
 const sideBar=document.getElementById("sideBar");
 const content=document.getElementById("content");
 const header=document.getElementById("header");
@@ -10,13 +11,14 @@ const table=document.getElementById("myTable");
 const eform=document.getElementById("editForm");
 const cform=document.getElementById("createForm");
 const sort=document.getElementById("sort");
-const alter=document.querySelectorAll("tr:nth-child(even)>td");
+const alter=document.querySelectorAll("tbody >tr:nth-child(even)>td");
 const tip=document.querySelectorAll(".tipText");
 
 
 function changeMode(){
    const dark=document.querySelector("#dark:checked")!= null;
    if(dark){
+    
        header.style.backgroundColor=" rgb(38, 65, 102)";
        sideBar.style.backgroundColor="rgba(25, 25, 25, 0.729)";
        sideBar.style.border=" 2px solid rgb(133, 133, 133)";
@@ -25,18 +27,19 @@ function changeMode(){
        body.style.color="white";
        title.style.textShadow="0px 2px 10px black";
        body.style.background="url("+"'/static/blackback.jpg'"+")";
-        //  body.style.backgroundImage="url({{ url_for('static',filename='/static/blackback.jpg')}})";
-         row.forEach(element => {
-           element.style.backgroundColor="rgb(95, 95, 95)";
-           element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
-       });
-        alter.forEach(element=>{
-            element.style.backgroundColor="rgb(77, 76, 76)";
-        });
-        tip.forEach(element => {
-            element.style.backgroundColor="rgb(26, 26, 26)";
-        });
-       logLogo.style.color="white";
+     
+       row.forEach(element => {
+        element.style.backgroundColor="rgb(95, 95, 95)";
+        element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
+    });
+     alter.forEach(element=>{
+         element.style.backgroundColor="rgb(77, 76, 76)";
+     });
+     tip.forEach(element => {
+         element.style.backgroundColor="rgb(26, 26, 26)";
+     });
+    logLogo.style.color="white";
+        
    }
    else{
     header.style.backgroundColor="rgb(67, 118, 190";
@@ -47,7 +50,6 @@ function changeMode(){
     body.style.color="black";
     title.style.textShadow="0px 2px 10px rgb(91, 87, 87)";
     body.style.background="url("+"'/static/back.jpg'"+")";
-    // body.style.backgroundImage="url({{ url_for('static',filename='/static/back.jpg')}})";
     row.forEach(element => {
         element.style.backgroundColor="rgb(230, 230, 230)";
         element.style.borderBottom="4px solid rgb(221, 221, 221)";
@@ -61,12 +63,18 @@ function changeMode(){
     logLogo.style.color="rgb(148, 148, 148)";
    }
 }
- function redirectToUpdate(){
+let ridd;
+ function redirectToUpdate(rid){
          title.innerText="Update";
          table.style.display="none";
          eform.style.display="block";
          sort.style.display="none";
          content.style.overflowX="none";
+         ridd=rid;
+         document.getElementById("updatebtn").onclick=function()
+         {
+             editCollege(ridd);
+         }
  }
  function redirectToCreate(){
     title.innerText="Add Data";
@@ -84,3 +92,16 @@ function changeMode(){
     sort.style.display="block";
     content.style.overflowX="scroll";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

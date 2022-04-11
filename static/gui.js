@@ -92,4 +92,5 @@ function changeMode(){
     cform.style.display="none";
     sort.style.display="block";
     content.style.overflowX="scroll";
+    getColleges("college_id", "ASC")
 }

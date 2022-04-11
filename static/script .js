@@ -112,6 +112,7 @@ function addCollege(){
 		
 		// window.location.href = "index.html";
 	})
+	redirectToTable()
 
 }
 

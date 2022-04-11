@@ -39,17 +39,17 @@ function getCollegesById(id) {
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data);
-		document.getElementsByName("collegeId").value = data[0][0];
-		document.getElementsByName("name").value = data[0][1];
-		document.getElementsByName("address").value = "hello";
-		document.getElementsByName("pr").value = data[0][3];
-		document.getElementsByName("ap").value = data[0][4];
-		document.getElementsByName("cutoff").value = data[0][5];
-		document.getElementsByName("url").value = data[0][6];
-		document.getElementsByName("autonomous").value = data[0][7];
-		document.getElementsByName("ranking").value = data[0][8];
-		// document.getElementById("rating").value = data[0][9];
+		document.getElementById("collegeId_edit").value = data[0][0];
+		document.getElementById("name_edit").value = data[0][1];
+		document.getElementById("address_edit").value = data[0][2];
+		document.getElementById("pr_edit").value = data[0][3];
+		document.getElementById("ap_edit").value = data[0][4];
+		document.getElementById("cutoff_edit").value = data[0][5];
+		document.getElementById("url_edit").value = data[0][6];
+		document.getElementById("autonomous_edit").value = data[0][7];
+		document.getElementById("updateButton").onclick= function(){ editCollege(data[0][0])}
 	})
+
 
 }
 
@@ -65,10 +65,8 @@ function deleteData(id) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data); 
-			// window.location.href = "index.html";
 		})
 	}
-	// window.location.href = "index.html";	
 
 
 
@@ -107,6 +105,7 @@ function addCollege(){
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data); 
+		
 		// window.location.href = "index.html";
 	})
 
@@ -114,14 +113,13 @@ function addCollege(){
 
 function editCollege(id){
 	// we need to pass id to edit perticuler college
-    var name= document.getElementById("name").value;
-    var address= document.getElementById("address").value;
-    var placementRatio= document.getElementById("pr").value;
-    var aveargePackage= document.getElementById("ap").value;
-    var cutoff= document.getElementById("cutoff").value;
-    var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
+    var name= document.getElementById("name_edit").value;
+    var address= document.getElementById("address_edit").value;
+    var placementRatio= document.getElementById("pr_edit").value;
+    var aveargePackage= document.getElementById("ap_edit").value;
+    var cutoff= document.getElementById("cutoff_edit").value;
+    var url= document.getElementById("url_edit").value;
+    var autonomous= document.getElementById("autonomous_edit").value;
 
 	let data = {
 		college_id:id,
@@ -132,10 +130,9 @@ function editCollege(id){
         cut_off: cutoff,
         website: url,
         autonomous: autonomous,
-        ranking: ranking
     };
 
-	fetch(api_url, {
+	fetch(`${api_url}colleges`, {
 		method: "PUT",
 		headers: {
 		  'Accept': 'application/json',
@@ -146,8 +143,8 @@ function editCollege(id){
 	.then((response) => response.json())
 	.then((data) => { 
 		console.table(data);
-		// window.location.href = "index.html";
 	})
+	redirectToTable()
 	
 }
 

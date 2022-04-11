@@ -1,5 +1,5 @@
-import fetch from 'node-fetch'
-const api_url = "http://127.0.0.1:5000/colleges"
+// import fetch from 'node-fetch'
+const api_url = "http://127.0.0.1:5000/"
 
 function loadData(records = []) {
 	console.log(records)
@@ -17,7 +17,7 @@ function loadData(records = []) {
 		table_data += `<td>${records[i][7]}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;
 		table_data += `<td>`;
-		table_data += `<a href="edit.html?id=${records[i][0]}"><button class="btn btn-primary">Edit</button></a>`;
+		table_data += `<i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate(${records[i][0]})"></i>`;
 		table_data += '&nbsp;&nbsp;';
 		table_data += `<button class="btn btn-danger">Delete</button>`;
 		table_data += `</td>`;
@@ -35,20 +35,20 @@ function getColleges(sortBy,sortType) {
 
 function getCollegesById(id) {
 	console.log(id)
-	fetch(`${api_url}?id=${id}`)
+	fetch(`${api_url}colleges?id=${id}`)
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data);
-		document.getElementById("id").value = data[0][0];
-		document.getElementById("name").value = data[0][1];
-		document.getElementById("address").value = data[0][2];
-		document.getElementById("pr").value = data[0][3];
-		document.getElementById("ap").value = data[0][4];
-		document.getElementById("cutoff").value = data[0][5];
-		document.getElementById("url").value = data[0][6];
-		document.getElementById("autonomous").value = data[0][7];
-		document.getElementById("ranking").value = data[0][8];
-		document.getElementById("rating").value = data[0][9];
+		document.getElementsByName("collegeId").value = data[0][0];
+		document.getElementsByName("name").value = data[0][1];
+		document.getElementsByName("address").value = "hello";
+		document.getElementsByName("pr").value = data[0][3];
+		document.getElementsByName("ap").value = data[0][4];
+		document.getElementsByName("cutoff").value = data[0][5];
+		document.getElementsByName("url").value = data[0][6];
+		document.getElementsByName("autonomous").value = data[0][7];
+		document.getElementsByName("ranking").value = data[0][8];
+		// document.getElementById("rating").value = data[0][9];
 	})
 
 }
@@ -73,6 +73,7 @@ function deleteData(id) {
 
 
 function addCollege(){
+	// var college_id=document.getElementsById("collegeID").value
 	var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -80,10 +81,10 @@ function addCollege(){
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
+    var ranking= 10;
 
 	let data = {
-		college_id:college_id,
+		college_id:26,
         name: name,
         address: address,
         placement_ratio: placementRatio,
@@ -93,8 +94,9 @@ function addCollege(){
         autonomous: autonomous,
         ranking: ranking
     };
+	console.log(data)
 	
-	fetch(api_url, {
+	fetch(`${api_url}colleges`, {
 		method: "POST",
 		headers: {
 		  'Accept': 'application/json',
@@ -110,7 +112,7 @@ function addCollege(){
 
 }
 
-function editCollege(){
+function editCollege(id){
 	// we need to pass id to edit perticuler college
     var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
@@ -122,7 +124,7 @@ function editCollege(){
     var ranking= document.getElementById("ranking").value;
 
 	let data = {
-		college_id:college_id,
+		college_id:id,
         name: name,
         address: address,
         placement_ratio: placementRatio,

@@ -59,12 +59,17 @@ function changeMode(){
     logLogo.style.color="rgb(148, 148, 148)";
    }
 }
- function redirectToUpdate(){
+ function redirectToUpdate(id){
          title.innerText="Update";
          table.style.display="none";
          eform.style.display="block";
          sort.style.display="none";
          content.style.overflowX="none";
+        //  const urlParams= new URLSearchParams(window.location.search);
+        //  const id= urlParams.get('id');
+         console.log(id)
+         getCollegesById(id)
+
  }
  function redirectToCreate(){
     title.innerText="Add Data";

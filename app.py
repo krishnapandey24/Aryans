@@ -87,7 +87,7 @@ def update_record():
     cur = conn.cursor()
 
 
-    college_id = data["college_id"]
+    college_id = int(data["college_id"])
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
@@ -95,9 +95,9 @@ def update_record():
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
-    ranking = data["ranking"]
+    # ranking = data["ranking"]
 
-    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_package}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
+    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_package}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}' WHERE college_id = '{college_id}'")
     cur = conn.cursor()
     
     conn.commit()

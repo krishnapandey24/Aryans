@@ -65,12 +65,11 @@ function changeMode(){
          eform.style.display="block";
          sort.style.display="none";
          content.style.overflowX="none";
-        //  const urlParams= new URLSearchParams(window.location.search);
-        //  const id= urlParams.get('id');
          console.log(id)
          getCollegesById(id)
 
  }
+
  function redirectToCreate(){
     title.innerText="Add Data";
     table.style.display="none";

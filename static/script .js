@@ -1,10 +1,5 @@
-<<<<<<< HEAD:templates/script .js
-import fetch from 'node-fetch'
-const api_url = "http://127.0.0.1:5000/colleges"
-=======
 // import fetch from 'node-fetch'
 const api_url = "http://127.0.0.1:5000/"
->>>>>>> main:static/script .js
 
 function loadData(records = []) {
 	console.log(records)
@@ -76,14 +71,9 @@ function deleteData(id) {
 	// window.location.href = "index.html";	
 
 
-<<<<<<< HEAD:templates/script .js
-	
-function addCollege(){
-=======
 
 function addCollege(){
 	// var college_id=document.getElementsById("collegeID").value
->>>>>>> main:static/script .js
 	var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -91,31 +81,15 @@ function addCollege(){
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
-<<<<<<< HEAD:templates/script .js
-    var ranking= document.getElementById("ranking").value;
-    var rating= document.getElementById("rating").value;
-	let data = {
-		college_id:college_id,
-=======
     var ranking= 10;
 
 	let data = {
 		college_id:26,
->>>>>>> main:static/script .js
         name: name,
         address: address,
         placement_ratio: placementRatio,
         average_package: aveargePackage,
         cut_off: cutoff,
-<<<<<<< HEAD:templates/script .js
-        website: site,
-        autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
-    };
-	
-	fetch(api_url, {
-=======
         website: url,
         autonomous: autonomous,
         ranking: ranking
@@ -123,7 +97,6 @@ function addCollege(){
 	console.log(data)
 	
 	fetch(`${api_url}colleges`, {
->>>>>>> main:static/script .js
 		method: "POST",
 		headers: {
 		  'Accept': 'application/json',
@@ -139,13 +112,8 @@ function addCollege(){
 
 }
 
-<<<<<<< HEAD:templates/script .js
-
-function editCollege(id){
-=======
 function editCollege(id){
 	// we need to pass id to edit perticuler college
->>>>>>> main:static/script .js
     var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -154,10 +122,6 @@ function editCollege(id){
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
     var ranking= document.getElementById("ranking").value;
-<<<<<<< HEAD:templates/script .js
-    var rating= document.getElementById("rating").value;
-=======
->>>>>>> main:static/script .js
 
 	let data = {
 		college_id:id,
@@ -168,12 +132,7 @@ function editCollege(id){
         cut_off: cutoff,
         website: url,
         autonomous: autonomous,
-<<<<<<< HEAD:templates/script .js
-        ranking: ranking,
-        rating: rating
-=======
         ranking: ranking
->>>>>>> main:static/script .js
     };
 
 	fetch(api_url, {
@@ -193,7 +152,3 @@ function editCollege(id){
 }
 
 
-<<<<<<< HEAD:templates/script .js
-
-=======
->>>>>>> main:static/script .js

@@ -66,11 +66,7 @@ def insert_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
-<<<<<<< HEAD
-    average_pakage = data["average_package"]
-=======
     average_package = data["average_package"]
->>>>>>> main
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
@@ -95,11 +91,7 @@ def update_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
-<<<<<<< HEAD
-    average_pakage = data["average_package"]
-=======
     average_package = data["average_package"]
->>>>>>> main
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]

@@ -20,12 +20,23 @@ mysql = MySQL(app)
 def homepage():
     return render_template("index.html")
 
-# TAKING ALL DATA
+# # TAKING ALL DATA
+# @app.route("/colleges", methods=["GET"])
+# def get_data():
+#     conn = mysql.connection
+#     cur = conn.cursor()
+#     cur.execute("SELECT * FROM colleges")
+#     all_data = cur.fetchall()
+#     cur.close()
+#     return jsonify(all_data)
+
+# FETCH DATA BY ID
 @app.route("/colleges", methods=["GET"])
 def get_data():
     conn = mysql.connection
     cur = conn.cursor()
-    cur.execute("SELECT * FROM colleges")
+    id = int(request.args.get('id'))
+    cur.execute(f"SELECT * FROM colleges WHERE college_id = {id}")
     all_data = cur.fetchall()
     cur.close()
     return jsonify(all_data)
@@ -55,13 +66,17 @@ def insert_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
+<<<<<<< HEAD
     average_pakage = data["average_package"]
+=======
+    average_package = data["average_package"]
+>>>>>>> main
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
     ranking = data["ranking"]
 
-    cur.execute(f"INSERT INTO colleges (college_id, name, address, placement_ratio, average_pakage, cut_off, website, autonomous, ranking) VALUES ('{college_id}', '{name}', '{address}', '{placement_ratio}', '{average_pakage}', '{cut_off}', '{website}', '{autonomous}', '{ranking}')")
+    cur.execute(f"INSERT INTO colleges (college_id, name, address, placement_ratio, average_pakage, cut_off, website, autonomous, ranking) VALUES ('{college_id}', '{name}', '{address}', '{placement_ratio}', '{average_package}', '{cut_off}', '{website}', '{autonomous}', '{ranking}')")
     conn.commit()
     cur.close()
 
@@ -80,13 +95,17 @@ def update_record():
     name = data["name"]
     address = data["address"]
     placement_ratio = data["placement_ratio"]
+<<<<<<< HEAD
     average_pakage = data["average_package"]
+=======
+    average_package = data["average_package"]
+>>>>>>> main
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
     ranking = data["ranking"]
 
-    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_pakage}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
+    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_package}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
     cur = conn.cursor()
     
     conn.commit()

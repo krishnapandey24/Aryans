@@ -70,6 +70,13 @@ function changeMode(){
 
  }
 
+ function deleteCollege(id,position){
+    if(deleteData(id)){
+        document.getElementById("myTable").deleteRow(position)
+    }
+
+ }
+
  function redirectToCreate(){
     title.innerText="Add Data";
     table.style.display="none";

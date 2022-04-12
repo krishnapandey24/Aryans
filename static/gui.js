@@ -13,6 +13,8 @@ const cform=document.getElementById("createForm");
 const sort=document.getElementById("sort");
 const alter=document.querySelectorAll("tbody >tr:nth-child(even)>td");
 const tip=document.querySelectorAll(".tipText");
+const next=document.querySelectorAll("#editForm>input");
+
 
 
 function changeMode(){
@@ -83,8 +85,13 @@ let ridd;
     eform.style.display="none";
     sort.style.display="none";
     content.style.overflowX="none";
+    document.getElementById("addbtn").onclick=function()
+    {
+        addCollege();
+    }
 }
  function redirectToTable(){
+   
     title.innerText="DashBoard";
     table.style.display="block";
     eform.style.display="none";

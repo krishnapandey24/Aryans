@@ -18,6 +18,7 @@ a{
 }
 i{
     cursor: pointer;
+    text-overflow:initial;
 }
 input{
     caret-color: black;
@@ -165,7 +166,10 @@ input:checked + .slider {
     table-layout: fixed;
 }
 .myTable th{
+    position: relative;
     padding: 12px 30px;
+    padding-left: 12px;
+    margin-left: 1vw;
 }
 .myTable tr{
     height: 2vh;
@@ -188,6 +192,33 @@ input:checked + .slider {
    background-color:rgb(230, 230, 230);/*rgb(230, 230, 230)*/
    padding: 12px 15px;
    border-bottom: 4px solid rgb(221, 221, 221);/*rgb(221, 221, 221)*/
+}
+.myTable td i{
+    text-overflow:initial ;
+}
+.arrow{
+    z-index: 10;
+    content: "";
+    display: block;
+    height: 10px;
+    width:10px;
+    border: 2px solid rgb(69, 58, 193);
+    border-left: 0;
+    border-top: 0;
+    /* background-color: rebeccapurple; */
+    right: 0px;
+    /* top:50%; */
+    position: absolute;
+}
+.up{
+    border-bottom-color:rgb(69, 58, 193) ;
+    margin-top: -5px;
+    transform: rotate(225deg);
+}
+.down{
+    border-top-color:rgb(69, 58, 193) ;
+    margin-top: 11px;
+    transform: rotate(45deg);
 }
 /* tool tip */
 .toolTip .tipText{

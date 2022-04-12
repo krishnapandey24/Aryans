@@ -9,19 +9,20 @@ function loadData(records = []) {
 	var table_data = "";
 	    table_data=`
 		<thead>
-		<tr>
-		<th>Sr.No</th>
-		<th>Name</th>
-		<th>Address</th>
-		<th>Placement Ratio</th>
-		<th>Average Pakage</th>
-		<th>Cutoff</th>
-		<th>Website</th>
-		<th>Is Autonomus</th>
-		<th>Rank</th>
-		<th>Action</th>
-		</tr>
-		</thead>`;
+            <tr> 
+                <th><div class="arrow down" onclick="getColleges('college_id','DESC')"></div><div class="arrow up" onclick="getColleges('college_id','ASC')"></div>Id</th>
+                <th><div class="arrow down" onclick="getColleges('name','DESC')"></div><div class="arrow up" onclick="getColleges('name','ASC')"></div>Name</th>
+                <th><div class="arrow down" onclick="getColleges('address','DESC')"></div><div class="arrow up" onclick="getColleges('address','ASC')"></div>Address</th>
+                <th><div class="arrow down" onclick="getColleges('placement_ratio','DESC')"></div><div class="arrow up" onclick="getColleges('placement_ratio','ASC')"></div>Placement Ratio</th>
+                <th><div class="arrow down" onclick="getColleges('average_pakage','DESC')"></div><div class="arrow up" onclick="getColleges('average_pakage','ASC')"></div>Average Pakage</th>
+                <th><div class="arrow down" onclick="getColleges('cut_off','DESC')"></div><div class="arrow up" onclick="getColleges('cut_off','ASC')"></div>Cutoff</th>
+                <th><div class="arrow down" onclick="getColleges('website','DESC')"></div><div class="arrow up" onclick="getColleges('website','ASC')"></div>Website</th>
+                <th><div class="arrow down" onclick="getColleges('autonomous','DESC')"></div><div class="arrow up" onclick="getColleges('autonomous','ASC')"></div>Is Autonomus</th>
+                <th><div class="arrow down" onclick="getColleges('ranking','DESC')"></div><div class="arrow up" onclick="getColleges('ranking','ASC')"></div>Rank</th>
+                <th >Action</th>
+
+            </tr>
+            </thead>`;
 	for(let i=0; i<records.length; i++) {
 		table_data += `<tr>`;
 
@@ -35,7 +36,7 @@ function loadData(records = []) {
 		table_data += `<td>${records[i][7]}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;
 		table_data += `<td><i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate(${records[i][0]})"></i> &nbsp;&nbsp;&nbsp;
-		<i class="fa fa-trash-o" style="font-size:28px;color:red"></i></td>`;
+		<i class="fa fa-trash-o" style="font-size:28px;color:red" onclick="deleteData(${records[i][0]})"></i></td>`;
 		
 		// table_data += `<td>`;
 		// table_data += `<a href="edit.html?id=${records[i][0]}"><button class="btn btn-primary">Edit</button></a>`;
@@ -76,6 +77,7 @@ function getCollegesById(id) {
 }
 
 function addCollege(){
+	var id =document.getElementById("id").value;
     var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -86,32 +88,39 @@ function addCollege(){
     var ranking= document.getElementById("ranking").value;
     // var rating= document.getElementById("rating").value;
 	
-	data = {
-        name: name,
-        address: address,
-        placementRatio: placementRatio,
-        aveargePackage: aveargePackage,
-        cutoff: cutoff,
-        websiteUrl: url,
-        autonomous: autonomous,
-        ranking: ranking,
-        rating: rating
-    };
+	// data = {
+    //     name: name,
+    //     address: address,
+    //     placementRatio: placementRatio,
+    //     aveargePackage: aveargePackage,
+    //     cutoff: cutoff,
+    //     websiteUrl: url,
+    //     autonomous: autonomous,
+    //     ranking: ranking,
+    //     rating: rating
+    // };
 	
-	fetch(url, {
-		method: "POST",
-		headers: {
-		  'Accept': 'application/json',
-		  'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data)
-	})
-	.then((response) => response.json())
+	// fetch(url, {
+	// 	method: "POST",
+	// 	headers: {
+	// 	  'Accept': 'application/json',
+	// 	  'Content-Type': 'application/json',
+	// 	},
+	// 	body: JSON.stringify(data)
+	// })
+	// .then((response) => response.json())
+	// .then((data) => { 
+	// 	console.log(data); 
+	// 	window.location.href = "index.html";
+	// })
+	fetch(`/colleges/add?id=${id}&name=${name}&address=${address}&placementRatio=${placementRatio}&aveargePackage=${aveargePackage}&cutoff=${cutoff}&url=${url}&autonomous=${autonomous}&ranking=${ranking}`).then((response) => response.json())
 	.then((data) => { 
-		console.log(data); 
-		window.location.href = "index.html";
-	})
-
+		// console.table(data);
+		// window.location.href = "index.html";
+	});
+	
+	getColleges("college_id","ASC");
+	redirectToTable();
 }
 
 
@@ -151,18 +160,18 @@ function editCollege(id){
 	// 	console.table(data);
 	// 	window.location.href = "index.html";
 	// })
-	fetch(`"/colleges/update?id=${id}&name=${name}&address=${address}&placementRatio=${placementRatio}&aveargePackage=${aveargePackage}&cutoff=${cutoff}&url=${url}&autonomous=${autonomous}&ranking=${ranking}`).then((response) => response.json())
+	fetch(`/colleges/update?id=${id}&name=${name}&address=${address}&placementRatio=${placementRatio}&aveargePackage=${aveargePackage}&cutoff=${cutoff}&url=${url}&autonomous=${autonomous}&ranking=${ranking}`).then((response) => response.json())
 	.then((data) => { 
 		// console.table(data);
 		// window.location.href = "index.html";
 	})
+	getColleges("college_id","ASC");
 	redirectToTable();
-
 
 }
 
 function deleteData(id) {
-		fetch(`${api_url}?id=${id}`, {
+		fetch(`/colleges/delete?id=${id}`, {
 			method: "DELETE",
 			headers: {
 			  'Accept': 'application/json',
@@ -170,10 +179,11 @@ function deleteData(id) {
 			},
 			body: JSON.stringify({id : id})
 		})
-		.then((response) => response.json())
+		.then((response) =>response.json())
 		.then((data) => {
 			console.log(data); 
 			// window.location.href = "index.html";
-		})
+		});
+		// getColleges("college_id","ASC");
 	}
 	// window.location.href = "index.html";	

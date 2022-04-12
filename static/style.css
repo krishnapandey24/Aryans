@@ -168,7 +168,7 @@ input:checked + .slider {
 .myTable th{
     position: relative;
     padding: 12px 30px;
-    padding-left: 12px;
+    padding-left: 25px;
     margin-left: 1vw;
 }
 .myTable tr{
@@ -230,7 +230,7 @@ input:checked + .slider {
     max-width: 19vw;
     border-radius:5px;
     margin-top: 5px;
-    margin-left: -5vw;
+    margin-left: 1.5vw;
     z-index: 4;
     background-color: rgb(103, 103, 103);
     color: aliceblue;
@@ -240,7 +240,7 @@ input:checked + .slider {
     content: "";
     position: absolute;
     bottom: 100%;
-    left:45%;
+    left:16%;
     border-width:5px;
     border-style: solid;
     border-color:transparent transparent rgb(103, 103, 103) transparent;

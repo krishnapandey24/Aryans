@@ -117,9 +117,10 @@ function addCollege(){
 	.then((data) => { 
 		// console.table(data);
 		// window.location.href = "index.html";
+		getColleges("college_id","ASC");
+
 	});
 	
-	getColleges("college_id","ASC");
 	redirectToTable();
 }
 
@@ -164,8 +165,9 @@ function editCollege(id){
 	.then((data) => { 
 		// console.table(data);
 		// window.location.href = "index.html";
+		getColleges("college_id","ASC");
 	})
-	getColleges("college_id","ASC");
+	
 	redirectToTable();
 
 }
@@ -176,14 +178,15 @@ function deleteData(id) {
 			headers: {
 			  'Accept': 'application/json',
 			  'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({id : id})
-		})
+			}})
 		.then((response) =>response.json())
 		.then((data) => {
-			console.log(data); 
+			// console.log(data); 
 			// window.location.href = "index.html";
+			getColleges("college_id","ASC");
 		});
-		// getColleges("college_id","ASC");
+		
 	}
 	// window.location.href = "index.html";	
+	// ,
+	// body: JSON.stringify({id : id}

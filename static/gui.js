@@ -70,7 +70,7 @@ let ridd;
          title.innerText="Update";
          table.style.display="none";
          eform.style.display="block";
-         sort.style.display="none";
+        //  sort.style.display="none";
          content.style.overflowX="none";
          ridd=rid;
          document.getElementById("updatebtn").onclick=function()
@@ -83,7 +83,7 @@ let ridd;
     table.style.display="none";
     cform.style.display="block";
     eform.style.display="none";
-    sort.style.display="none";
+    // sort.style.display="none";
     content.style.overflowX="none";
     document.getElementById("addbtn").onclick=function()
     {
@@ -96,7 +96,7 @@ let ridd;
     table.style.display="block";
     eform.style.display="none";
     cform.style.display="none";
-    sort.style.display="block";
+    // sort.style.display="block";
     content.style.overflowX="scroll";
 }
 

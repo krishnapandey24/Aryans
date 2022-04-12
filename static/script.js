@@ -6,7 +6,6 @@ function loadData(records = []) {
 	var table_data = "";
 	for(let i=0; i<records.length; i++) {
 		table_data += `<tr>`;
-
 		table_data += `<td>${records[i][0]}</td>`;
 		table_data += `<td>${records[i][1]}</td>`;
 		table_data += `<td>${records[i][2]}</td>`;
@@ -19,7 +18,7 @@ function loadData(records = []) {
 		table_data += `<td>`;
 		table_data += `<i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate(${records[i][0]})"></i>`;
 		table_data += '&nbsp;&nbsp;';
-		table_data += `<button class="btn btn-danger">Delete</button>`;
+		table_data += ` <i class="fa fa-trash-o" style="font-size:28px;color:red" onclick="deleteCollege(${records[i][0]},${i})"></i>`;
 		table_data += `</td>`;
 		table_data += `</tr>`;
 	}
@@ -39,22 +38,23 @@ function getCollegesById(id) {
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data);
-		document.getElementsByName("collegeId").value = data[0][0];
-		document.getElementsByName("name").value = data[0][1];
-		document.getElementsByName("address").value = "hello";
-		document.getElementsByName("pr").value = data[0][3];
-		document.getElementsByName("ap").value = data[0][4];
-		document.getElementsByName("cutoff").value = data[0][5];
-		document.getElementsByName("url").value = data[0][6];
-		document.getElementsByName("autonomous").value = data[0][7];
-		document.getElementsByName("ranking").value = data[0][8];
-		// document.getElementById("rating").value = data[0][9];
+		document.getElementById("collegeId_edit").value = data[0][0];
+		document.getElementById("name_edit").value = data[0][1];
+		document.getElementById("address_edit").value = data[0][2];
+		document.getElementById("pr_edit").value = data[0][3];
+		document.getElementById("ap_edit").value = data[0][4];
+		document.getElementById("cutoff_edit").value = data[0][5];
+		document.getElementById("url_edit").value = data[0][6];
+		document.getElementById("autonomous_edit").value = data[0][7];
+		document.getElementById("updateButton").onclick= function(){ editCollege(data[0][0])}
 	})
+
 
 }
 
 function deleteData(id) {
-		fetch(`${api_url}?id=${id}`, {
+	if(confirm(`Are you sure you want to delete this record?`)){
+		fetch(`${api_url}/colleges?id=${id}`, {
 			method: "DELETE",
 			headers: {
 			  'Accept': 'application/json',
@@ -65,10 +65,12 @@ function deleteData(id) {
 		.then((response) => response.json())
 		.then((data) => {
 			console.log(data); 
-			// window.location.href = "index.html";
 		})
+		return true
+	}else{
+		return false
 	}
-	// window.location.href = "index.html";	
+}
 
 
 
@@ -107,21 +109,22 @@ function addCollege(){
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data); 
+		
 		// window.location.href = "index.html";
 	})
+	redirectToTable()
 
 }
 
 function editCollege(id){
 	// we need to pass id to edit perticuler college
-    var name= document.getElementById("name").value;
-    var address= document.getElementById("address").value;
-    var placementRatio= document.getElementById("pr").value;
-    var aveargePackage= document.getElementById("ap").value;
-    var cutoff= document.getElementById("cutoff").value;
-    var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
-    var ranking= document.getElementById("ranking").value;
+    var name= document.getElementById("name_edit").value;
+    var address= document.getElementById("address_edit").value;
+    var placementRatio= document.getElementById("pr_edit").value;
+    var aveargePackage= document.getElementById("ap_edit").value;
+    var cutoff= document.getElementById("cutoff_edit").value;
+    var url= document.getElementById("url_edit").value;
+    var autonomous= document.getElementById("autonomous_edit").value;
 
 	let data = {
 		college_id:id,
@@ -132,10 +135,9 @@ function editCollege(id){
         cut_off: cutoff,
         website: url,
         autonomous: autonomous,
-        ranking: ranking
     };
 
-	fetch(api_url, {
+	fetch(`${api_url}colleges`, {
 		method: "PUT",
 		headers: {
 		  'Accept': 'application/json',
@@ -146,8 +148,8 @@ function editCollege(id){
 	.then((response) => response.json())
 	.then((data) => { 
 		console.table(data);
-		// window.location.href = "index.html";
 	})
+	redirectToTable()
 	
 }
 

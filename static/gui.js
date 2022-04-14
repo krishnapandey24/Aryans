@@ -14,7 +14,8 @@ const sort=document.getElementById("sort");
 const alter=document.querySelectorAll("tbody >tr:nth-child(even)>td");
 const tip=document.querySelectorAll(".tipText");
 const next=document.querySelectorAll("#editForm>input");
-
+const loaderback=document.getElementById("loaderback");
+const loader=document.getElementById("loader");
 
 
 function changeMode(){
@@ -57,7 +58,7 @@ function changeMode(){
         element.style.borderBottom="4px solid rgb(221, 221, 221)";
     });
     alter.forEach(element=>{
-        element.style.backgroundColor="rgb(225, 222, 222)";
+        element.style.backgroundColor="rgb(205, 205, 205)";
     });
     tip.forEach(element => {
         element.style.backgroundColor="rgb(103, 103, 103)";
@@ -69,9 +70,19 @@ let ridd;
  function redirectToUpdate(rid){
          title.innerText="Update";
          table.style.display="none";
-         eform.style.display="block";
+         eform.style.display="grid";
         //  sort.style.display="none";
          content.style.overflowX="none";
+
+         document.getElementById("cname").value="";
+         document.getElementById("caddress").value="";
+         document.getElementById("cpr").value="";
+         document.getElementById("cap").value="";
+         document.getElementById("ccutoff").value="";
+         document.getElementById("curl").value="";
+         document.getElementById("cautonomous").value="";
+         document.getElementById("cranking").value="";
+
          ridd=rid;
          document.getElementById("updatebtn").onclick=function()
          {
@@ -81,10 +92,21 @@ let ridd;
  function redirectToCreate(){
     title.innerText="Add Data";
     table.style.display="none";
-    cform.style.display="block";
+    cform.style.display="grid";
     eform.style.display="none";
     // sort.style.display="none";
     content.style.overflowX="none";
+
+    document.getElementById("id").value="";
+    document.getElementById("name").value="";
+    document.getElementById("address").value="";
+    document.getElementById("pr").value="";
+    document.getElementById("ap").value="";
+    document.getElementById("cutoff").value="";
+    document.getElementById("url").value="";
+    document.getElementById("autonomous").value="";
+    document.getElementById("ranking").value="";
+
     document.getElementById("addbtn").onclick=function()
     {
         addCollege();

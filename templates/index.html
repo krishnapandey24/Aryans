@@ -31,87 +31,142 @@
         <div></div>
         <div class="logout"><i class="fa fa-sign-out" style="font-size:25px;color:rgb(60, 59, 59)"></i>Logout</div>
 
-    </div> -->
+
+    </div>
+    <div class="title" id="title">
+        DashBoard
+    </div>
+
     <!-- <div id="sort">
         <label for="select"><b>Sort By: </b></label>
         <select name="select" id="select">
             <option value="name">Name</option>
             <option value="address">Address</option>
             <option value="placementRatio">Placement Ratio</option>
-            <option value="averagePakage">Average Pakage</option>
-            <option value="name">Name</option>
+
+            <option value="averagePakage">Average Pakage</option>           
+
             <option value="cutoff">Cutoff</option>
             <option value="website">Website</option>
             <option value="rank">Rank</option>
         </select>
-        <label for="asc"><b>Asc</b></label>
-        <input type="checkbox" name="asc" id="">
-        <label for="desc"><b>Desc</b></label>
-        <input type="checkbox" name="desc" id="">
+
+        <label for="oder"><b>Asc</b></label>
+        <input type="radio" name="oder" id="">
+        <label for="oder"><b>Desc</b></label>
+        <input type="radio" name="oder" id="">
     </div> -->
     <div class="content" id="content">
-        <div class="form" id="editForm">
-            <label for="collegeId">CollegeId</label><br>
-            <input type="number" name="collegeId" id="collegeId_edit"><br>
-            <label for="name">Name</label><br>
-            <input type="text" name="name" id="name_edit"><br>
-            <label for="address">Address</label><br>
-            <input type="text" name="address" id="address_edit"><br>
-            <label for="placementRatio">Placement Ratio</label><br>
-            <input type="number" name="placementRatio" id="pr_edit"><br>
-            <label for="averagePackage">Average Package <i>(lakh per anum)</i></label><br>
-            <input type="number" name="averagePackage" id="ap_edit"><br>
-            <label for="cutoff">Cutoff</label><br>
-            <input type="number" name="cutoff" id="cutoff_edit"><br>
-            <label for="websiteUrl">Website Url</label><br>
-            <input type="text" name="websiteUrl" id="url_edit"><br>
-            <label for="autonomous">Autonomous</label><br>
-            <input type="number" name="autonomous" id="autonomous_edit"><br><br>
-            <div class="button primary" onclick="editCollege()" id="updateButton">Update</div>
-            <div class="button delete" onclick="redirectToTable()">Cancel</div>
-        </div>
+        <div class="form" id="editForm" >
+        
+                <div id="ename">
+                <label for="name">name</label><br>
+                <input type="text" name="name" id="cname" autocomplete="off" required><br>
+                </div>
+                <div id="eadd">
+                <label for="address">Address</label><br>
+                <input type="text" name="address" id="caddress" autocomplete="off" required><br>
+                </div>
+                <div id="epr">
+                <label for="placementRatio">Placement Ratio</label><br>
+                <input type="text" name="placementRatio" id="cpr" autocomplete="off" required><br>
+                </div>
+                <div id="eap">
+                <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+                <input type="text" name="averagePakage" id="cap" autocomplete="off" required><br>
+                </div>
+                <div id="ecut">
+                <label for="cutoff">Cutoff</label><br>
+                <input type="text" name="cutoff" id="ccutoff" autocomplete="off" required><br>
+                </div>
+                <div id="eurl">
+                <label for="websiteUrl">Website Url</label><br>
+                <input type="text" name="websiteUrl" id="curl" autocomplete="off" required><br>
+                </div>
+                <div id="eauto">
+                <label for="autonomous">Autonomous</label><br>
+                <input type="text" name="autonomous" id="cautonomous" autocomplete="off" required><br>
+                </div>
+                <div id="erank">
+                <label for="rank">Rank</label><br>
+                <input type="text" name="rank" id="cranking" autocomplete="off" required><br><br>
+                </div><br><br>
+                <div id="ebtn">
+            <div class="button primary"  id="updatebtn" >Update</div>
+           <div class="button delete"  id="deletebtn" onclick="redirectToTable()">Cancel</div>
+            </div>
+         </div>
         <div class="form" id="createForm">
-            <label for="name">Name</label><br>
-            <input type="text" name="name" id="name"><br>
+            <div id="pid">
+            <label for="id">id</label><br>
+            <input type="text" name="id" id="id" autocomplete="off" required><br>
+            </div>
+            <div id="pname">
+            <label for="name">name</label><br>
+            <input type="text" name="name" id="name" autocomplete="off" required><br>
+            </div>
+            <div id="padd">
             <label for="address">Address</label><br>
-            <input type="text" name="address" id="address"><br>
+            <input type="text" name="address" id="address" autocomplete="off" required><br>
+            </div>
+            <div id="ppr">
             <label for="placementRatio">Placement Ratio</label><br>
-            <input type="number" name="placementRatio" id="pr"><br>
-            <label for="averagePackage">Average Package <i>(lakh per anum)</i></label><br>
-            <input type="number" name="averagePackage" id="ap"><br>
+            <input type="text" name="placementRatio" id="pr" autocomplete="off" required><br>
+            </div>
+            <div id="pap">
+            <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+            <input type="text" name="averagePakage" id="ap" autocomplete="off" required><br>
+            </div>
+            <div id="pcut">
             <label for="cutoff">Cutoff</label><br>
-            <input type="number" name="cutoff" id="cutoff"><br>
+            <input type="text" name="cutoff" id="cutoff" autocomplete="off" required><br>
+            </div>
+            <div id="purl">
             <label for="websiteUrl">Website Url</label><br>
-            <input type="text" name="websiteUrl" id="url"><br>
+            <input type="text" name="websiteUrl" id="url" autocomplete="off" required><br>
+            </div>
+            <div id="pauto">
             <label for="autonomous">Autonomous</label><br>
-            <input type="number" name="autonomous" id="autonomous"><br><br>
-            <div class="button primary" onclick="addCollege()">Add</div>
-            <div class="button delete" onclick="redirectToTable()">Cancel</div>
+            <input type="text" name="autonomous" id="autonomous" autocomplete="off" required><br>
+            </div>
+            <div id="prank">
+            <label for="rank">Rank</label><br>
+            <input type="text" name="rank" id="ranking" autocomplete="off" required><br><br>
+            </div>
+            <div id="pbtn">
+            <div class="button primary" id="addbtn" >Add</div>
+           <div class="button delete" onclick="redirectToTable()">Cancel</div>
+          </div>
         </div>
         <table class="myTable" id="myTable">
-            <thead>
-                <tr>
-                    <th>Sr.No</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Placement Ratio</th>
-                    <th>Average Package</th>
-                    <th>Cutoff</th>
-                    <th>Website</th>
-                    <th>Is Autonomus</th>
-                    <th>Rank</th>
-                    <th>Action</th>
+           <thead>
+            <tr> 
+                <th><div class="arrow down"></div><div class="arrow up"></div>Id</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Name</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Address</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Placement Ratio</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Average Pakage</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Cutoff</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Website</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Is Autonomus</th>
+                <th><div class="arrow down"></div><div class="arrow up"></div>Rank</th>
+                <th >Action</th>
 
-                </tr>
-            <tbody id="tbody">
-            </tbody>
+            </tr>
+            </thead>
+           
         </table>
     </div>
-    <script src="../static/gui.js"></script>
-    <script src="../static/script.js"></script>
-    <script>
-        getColleges("college_id", "ASC")
-    </script>
+    <div id="loaderback" >
+    </div>
+     <div id="loader">
+        <span></span>
+        <span id="bubble2"></span>
+        <span id="bubble3"></span>
+      </div>
+    <script src="{{ url_for('static', filename='gui.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 
 </html>

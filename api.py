@@ -31,7 +31,9 @@ def get_data():
     return jsonify(all_data)
 
 # DELETING DATA
+
 @app.route('/colleges/delete', methods=['DELETE'])
+
 def delete_record():
     conn = mysql.connection
     cur = conn.cursor()
@@ -44,6 +46,7 @@ def delete_record():
     return {"result": "Record deleted Succesfully"}
 
 # INSERTING DATA
+
 @app.route('/colleges/add', methods=['GET'])
 def insert_record():
 
@@ -78,10 +81,12 @@ def insert_record():
     return {"result": "Record inserted Succesfully"}
 
 # UPDATING DATA
+
 @app.route('/colleges/update', methods=['GET'])
 def update_record():
 
     # data = request.get_json()
+
     conn = mysql.connection
     cur = conn.cursor()
 

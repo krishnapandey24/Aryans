@@ -66,6 +66,7 @@ function changeMode(){
     logLogo.style.color="rgb(148, 148, 148)";
    }
 }
+
 let ridd;
  function redirectToUpdate(rid){
          title.innerText="Update";
@@ -88,13 +89,24 @@ let ridd;
          {
              editCollege(ridd);
          }
+
  }
+
+ function deleteCollege(id,position){
+    if(deleteData(id)){
+        document.getElementById("myTable").deleteRow(position)
+    }
+
+ }
+
  function redirectToCreate(){
-    title.innerText="Add Data";
+    //title.innerText="Add Data";
     table.style.display="none";
     cform.style.display="grid";
     eform.style.display="none";
+
     // sort.style.display="none";
+
     content.style.overflowX="none";
 
     document.getElementById("id").value="";
@@ -113,6 +125,7 @@ let ridd;
     }
 }
  function redirectToTable(){
+
    
     title.innerText="DashBoard";
     table.style.display="block";
@@ -121,6 +134,7 @@ let ridd;
     // sort.style.display="block";
     content.style.overflowX="scroll";
 }
+
 
 
 

@@ -145,10 +145,12 @@ input:checked + .slider {
     border: 2px solid rgba(252, 250, 250, 0.422);
 } */
 .content{
+   overflow-x:scroll;
    position:absolute;
    top:16vh;
-   left:8vw ;
+   left:25vw ;
    box-shadow: 0 2px 25px 1px rgb(64 60 67 / 24%);
+   width:70vw;
    backdrop-filter:blur(10px);
    background-color: rgba(221, 221, 221, 0.729); /*rgba(221, 221, 221, 0.729)*/
    border: 2px solid rgba(252, 250, 250, 0.422); /*rgba(252, 250, 250, 0.422)*/
@@ -163,7 +165,6 @@ input:checked + .slider {
     border-collapse: collapse;
     text-align: center;
     table-layout: fixed;
-    width: 100%;
 }
 .myTable th{
     position: relative;

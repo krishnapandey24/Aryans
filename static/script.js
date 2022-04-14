@@ -1,3 +1,4 @@
+
 // import fetch from "node-fetch";
 
 const api_url = "http://127.0.0.1:5000/colleges/sorted"
@@ -62,10 +63,12 @@ function getColleges(sortBy,sortType) {
 	// loaderback.setAttribute('class',"abc");
 	// loader.setAttribute('class',"abc");
 	
+
 }
 
 
 function getCollegesById(id) {
+
 	
 	fetch(`${api_url}?id=${id}`)
 	.then((response) => response.json())
@@ -91,12 +94,14 @@ function addCollege(){
 
 	var id =document.getElementById("id").value;
     var name= document.getElementById("name").value;
+
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
     var aveargePackage= document.getElementById("ap").value;
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
+
     var ranking= document.getElementById("ranking").value;
     // var rating= document.getElementById("rating").value;
 	
@@ -235,3 +240,4 @@ function deleteData(id) {
 	// window.location.href = "index.html";	
 	// ,
 	// body: JSON.stringify({id : id}
+

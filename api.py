@@ -20,18 +20,24 @@ mysql = MySQL(app)
 def homepage():
     return render_template("index.html")
 
+ 
 # TAKING ALL DATA
+
 @app.route("/colleges", methods=["GET"])
 def get_data():
     conn = mysql.connection
     cur = conn.cursor()
+
     cur.execute("SELECT * FROM colleges")
+
     all_data = cur.fetchall()
     cur.close()
     return jsonify(all_data)
 
 # DELETING DATA
+
 @app.route('/colleges/delete', methods=['DELETE'])
+
 def delete_record():
     conn = mysql.connection
     cur = conn.cursor()
@@ -44,6 +50,7 @@ def delete_record():
     return {"result": "Record deleted Succesfully"}
 
 # INSERTING DATA
+
 @app.route('/colleges/add', methods=['GET'])
 def insert_record():
 
@@ -72,18 +79,22 @@ def insert_record():
     ranking =  str(request.args.get('ranking'))
 
     cur.execute(f"INSERT INTO colleges (college_id, name, address, placement_ratio, average_pakage, cut_off, website, autonomous, ranking) VALUES ('{college_id}', '{name}', '{address}', '{placement_ratio}', '{average_pakage}', '{cut_off}', '{website}', '{autonomous}', '{ranking}')")
+
     conn.commit()
     cur.close()
 
     return {"result": "Record inserted Succesfully"}
 
 # UPDATING DATA
+
 @app.route('/colleges/update', methods=['GET'])
 def update_record():
 
     # data = request.get_json()
+
     conn = mysql.connection
     cur = conn.cursor()
+
 
 
     # college_id = data["college_id"]
@@ -107,6 +118,7 @@ def update_record():
     ranking =  str(request.args.get('ranking'))
 
     cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_pakage}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
+
     cur = conn.cursor()
     
     conn.commit()

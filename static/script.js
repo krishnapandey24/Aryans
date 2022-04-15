@@ -39,11 +39,24 @@ function getColleges(sortBy,sortType) {
 	})		
 }
 
+function getCollegesWithoutSort() {
+	startLoading()
+	console.log("function called")
+	fetch(`${api_url}colleges`)
+	.then((response) => response.json())
+	.then((data) => {
+		console.log("data recived: ")
+		console.log(data)
+		loadData(data)
+		stopLoading()
+	})		
+}
+
 
 function getCollegesById(id) {
 	startLoading()
 	console.log(id)
-	fetch(`${api_url}colleges?id=${id}`)
+	fetch(`${api_url}college?id=${id}`)
 	.then((response) => response.json())
 	.then((data) => { 
 		console.log(data);
@@ -97,7 +110,9 @@ function addCollege(){
     var aveargePackage= document.getElementById("ap").value;
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous_yes").checked ? 1 : 0;
+	console.log(`auto: ${document.getElementById("autonomous_yes1").checked}`)
+    var autonomous= document.getElementById("autonomous_yes1").checked ? 1 : 0;
+	console.log(`later: ${autonomous}`)
     var ranking= document.getElementById("ranking").value;
 
 	let data = {
@@ -132,7 +147,6 @@ function addCollege(){
 
 function editCollege(id){
 	startLoading()
-	// we need to pass id to edit perticuler college
     var name= document.getElementById("name_edit").value;
     var address= document.getElementById("address_edit").value;
     var placementRatio= document.getElementById("pr_edit").value;

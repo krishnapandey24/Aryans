@@ -14,28 +14,27 @@ const tip=document.querySelectorAll(".tipText");
 const next=document.querySelectorAll("#editForm>input");
 const loaderback=document.getElementById("loaderback");
 const loader=document.getElementById("loader");
-const options=["name","placement_ratio","average_pakage","cut_off","ranking"]
+const options=["name","placement_ratio","average_package","cut_off","ranking"]
 
 
 function changeMode(){
    const dark=document.querySelector("#dark:checked")!= null;
    if(dark){
-    
        header.style.backgroundColor=" rgb(38, 65, 102)";
-       sideBar.style.backgroundColor="rgba(25, 25, 25, 0.729)";
-       sideBar.style.border=" 2px solid rgb(133, 133, 133)";
+       sideBar.style.backgroundColor="rgb(20,34,51)";
+       sideBar.style.boxShadow="none"
        content.style.backgroundColor=" rgba(25, 25, 25, 0.729)";
        content.style.border="2px solid rgb(148, 148, 148)";
        body.style.color="white";
        title.style.textShadow="0px 2px 10px black";
-       body.style.background="url("+"'/static/blackback.jpg'"+")";
+       body.style.background="rgb(10,22,35)";
      
        row.forEach(element => {
-        element.style.backgroundColor="rgb(95, 95, 95)";
+        element.style.backgroundColor="rgb(20,30,46)";
         element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
     });
      alter.forEach(element=>{
-         element.style.backgroundColor="rgb(77, 76, 76)";
+         element.style.backgroundColor="rgb(20,30,46)";
      });
      tip.forEach(element => {
          element.style.backgroundColor="rgb(26, 26, 26)";
@@ -51,7 +50,7 @@ function changeMode(){
     content.style.border="2px solid rgba(252, 250, 250, 0.422)";
     body.style.color="black";
     title.style.textShadow="0px 2px 10px rgb(91, 87, 87)";
-    body.style.background="url("+"'/static/back.jpg'"+")";
+    body.style.background="url("+"'../static/back.jpg'"+")";
     row.forEach(element => {
         element.style.backgroundColor="rgb(230, 230, 230)";
         element.style.borderBottom="4px solid rgb(221, 221, 221)";
@@ -111,9 +110,10 @@ function redirectToUpdate(rid){
     document.getElementById("ap").value="";
     document.getElementById("cutoff").value="";
     document.getElementById("url").value="";
-    document.getElementById("autonomous_yes").checked=true;
+    console.log("setting")
+    document.getElementById("autonomous_yes1").checked = true;
+    console.log("setted")
     document.getElementById("ranking").value="";
-
     document.getElementById("addbtn").onclick=function()
     {
         addCollege();
@@ -141,9 +141,13 @@ function stopLoading(){
 
 function sortCollege(){
     var sortOptions= document.getElementById("select");
-    var selectedOption= sortOptions.options[sortOptions.selectedIndex].text;
     var sortASC = document.getElementById("order_asc").checked;
-    getColleges(options[sortOptions.selectedIndex],sortASC ? "ASC" : "DESC")
+    var index=sortOptions.selectedIndex
+    if(index==0){
+        getCollegesWithoutSort()
+    }else{
+        getColleges(options[index-1],sortASC ? "ASC" : "DESC")
+    }
     console.log(`selected option ${options[sortOptions.selectedIndex]} sortASC ${sortASC}`)
 }
 

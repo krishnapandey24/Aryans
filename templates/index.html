@@ -34,6 +34,7 @@
     <div id="sort">
         <label for="select"><b>Sort By: </b></label>
         <select name="select" id="select" onchange="sortCollege()">
+            <option value="date">Date Added</option>
             <option value="name">Name</option>
             <option value="placementRatio">Placement Ratio</option>
             <option value="averagePakage">Average Package</option>           
@@ -48,7 +49,7 @@
     <div class="content" id="content">
         <div class="form" id="editForm" >
                 <div id="ename">
-                <label for="name">name</label><br>
+                <label for="name">Name</label><br>
                 <input type="text" name="name" id="name_edit" autocomplete="off" required><br>
                 </div>
                 <div id="eadd">
@@ -82,7 +83,7 @@
                 </div>
                 <div id="erank">
                 <label for="rank">Rank</label><br>
-                <input type="text" name="rank" id="ranking_edit" autocomplete="off" required><br><br>
+                <input type="number" name="rank" id="ranking_edit" autocomplete="off" required><br><br>
                 </div><br><br>
                 <div id="ebtn">
             <div class="button primary"  id="updatebtn" >Update</div>
@@ -91,7 +92,7 @@
          </div>
         <div class="form" id="createForm">
             <div id="pname">
-            <label for="name">name</label><br>
+            <label for="name">Name</label><br>
             <input type="text" name="name" id="name" autocomplete="off" required><br>
             </div>
             <div id="padd">
@@ -118,14 +119,14 @@
             <label for="autonomous">Autonomous</label><br>
             <div class="autonomous_selection">
             <label for="autonomous"><b>Yes</b></label>
-            <input type="radio" name="rautonomous" id="autonomous_yes">
+            <input type="radio" name="rautonomous" id="autonomous_yes1">
             <label for="autonomous"><b>No</b></label>
-            <input type="radio" name="rautonomous" id="autonomous_no">
+            <input type="radio" name="rautonomous" id="autonomous_no1">
             </div>
             </div>
             <div id="prank">
             <label for="rank">Rank</label><br>
-            <input type="text" name="rank" id="ranking" autocomplete="off" required><br><br>
+            <input type="number" name="rank" id="ranking" autocomplete="off" required><br><br>
             </div>
             <div id="pbtn">
             <div class="button primary" id="addbtn">Add</div>
@@ -162,7 +163,7 @@
       <script src="../static/gui.js"></script>
       <script src="../static/script.js"></script>
       <script>
-          getColleges("name", "ASC")
+          getCollegesWithoutSort()
           var radioButton=document.getElementById("order_asc")
           radioButton.checked = true;
           radioButton.addEventListener('change', function(){

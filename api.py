@@ -20,12 +20,21 @@ mysql = MySQL(app)
 def homepage():
     return render_template("index.html")
 
-@app.route("/colleges", methods=["GET"])
-def get_data():
+@app.route("/college", methods=["GET"])
+def get_college_by_id():
     conn = mysql.connection
     cur = conn.cursor()
     id = int(request.args.get('id'))
     cur.execute(f"SELECT * FROM colleges WHERE college_id = {id}")
+    all_data = cur.fetchall()
+    cur.close()
+    return jsonify(all_data)
+
+@app.route("/colleges", methods=["GET"])
+def get_all():
+    conn = mysql.connection
+    cur = conn.cursor()
+    cur.execute(f"SELECT * FROM colleges")
     all_data = cur.fetchall()
     cur.close()
     return jsonify(all_data)

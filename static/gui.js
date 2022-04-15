@@ -109,7 +109,7 @@ function redirectToUpdate(rid){
 
     content.style.overflowX="none";
 
-    document.getElementById("id").value="";
+    document.getElementById("collegeId").value="";
     document.getElementById("name").value="";
     document.getElementById("address").value="";
     document.getElementById("pr").value="";
@@ -130,7 +130,6 @@ function redirectToUpdate(rid){
     table.style.display="block";
     eform.style.display="none";
     cform.style.display="none";
-    // sort.style.display="block";
     content.style.overflowX="scroll";
 }
 

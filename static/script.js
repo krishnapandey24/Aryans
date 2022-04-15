@@ -85,7 +85,7 @@ function deleteData(id) {
 
 function addCollege(){
 	startLoading()
-	// var college_id=document.getElementsById("collegeID").value
+	var college_id=document.getElementById("collegeId").value
 	var name= document.getElementById("name").value;
     var address= document.getElementById("address").value;
     var placementRatio= document.getElementById("pr").value;
@@ -96,7 +96,7 @@ function addCollege(){
     var ranking= 10;
 
 	let data = {
-		college_id:26,
+		college_id:college_id,
         name: name,
         address: address,
         placement_ratio: placementRatio,
@@ -165,5 +165,4 @@ function editCollege(id){
 	})
 	
 }
-
 

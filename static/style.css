@@ -413,6 +413,8 @@ input[type=number]:focus{
 tr > td:hover {
     overflow: visible;
     white-space: unset;
+    word-wrap: break-word;
+
 }
 
 

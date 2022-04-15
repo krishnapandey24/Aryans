@@ -105,7 +105,6 @@ function redirectToUpdate(rid){
     eform.style.display="none";
     sort.style.display="none";
     content.style.overflowX="none";
-    document.getElementById("collegeId").value="";
     document.getElementById("name").value="";
     document.getElementById("address").value="";
     document.getElementById("pr").value="";

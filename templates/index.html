@@ -12,24 +12,20 @@
 
 <body>
     <header id="header">
-        <div class="logo">CollegeDb.Com</div>
+        <div class="logo">Aryans</div>
         </div>
     </header>
      <div class="sideBar" id="sideBar">
-        <div class="welcome">Welcome...Admin</div>
         <div>
             <b>ACTIONS</b>
             <div class="add">Add Data<div class="button" onclick="redirectToCreate()">+</div>
             </div>
-
         </div>
         <div>
             <b>PERSNALISE</b>
             <div class="mode">Mode <input class="check" type="checkbox" id="dark" onclick="changeMode()"><span
                     class="slider"></span></div>
         </div>
-        <div></div>
-        <div class="logout"><i class="fa fa-sign-out" style="font-size:25px;color:rgb(60, 59, 59)"></i>Logout</div>
 
 
     </div>
@@ -37,25 +33,21 @@
         DashBoard
     </div>
 
-    <!-- <div id="sort">
+    <div id="sort">
         <label for="select"><b>Sort By: </b></label>
-        <select name="select" id="select">
+        <select name="select" id="select" onchange="sortCollege()">
             <option value="name">Name</option>
-            <option value="address">Address</option>
             <option value="placementRatio">Placement Ratio</option>
-
-            <option value="averagePakage">Average Pakage</option>           
-
+            <option value="averagePakage">Average Package</option>           
             <option value="cutoff">Cutoff</option>
-            <option value="website">Website</option>
             <option value="rank">Rank</option>
         </select>
 
-        <label for="oder"><b>Asc</b></label>
-        <input type="radio" name="oder" id="">
-        <label for="oder"><b>Desc</b></label>
-        <input type="radio" name="oder" id="">
-    </div> -->
+        <label for="order"><b>Asc</b></label>
+        <input type="radio" name="oder" id="order_asc">
+        <label for="order"><b>Desc</b></label>
+        <input type="radio" name="oder" id="order_desc">
+    </div>
     <div class="content" id="content">
         <div class="form" id="editForm" >
                 <div id="ename">
@@ -71,7 +63,7 @@
                 <input type="text" name="placementRatio" id="pr_edit" autocomplete="off" required><br>
                 </div>
                 <div id="eap">
-                <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+                <label for="averagePakage">Average Package <i>(lakh per anum)</i></label><br>
                 <input type="text" name="averagePakage" id="ap_edit" autocomplete="off" required><br>
                 </div>
                 <div id="ecut">
@@ -113,7 +105,7 @@
             <input type="text" name="placementRatio" id="pr" autocomplete="off" required><br>
             </div>
             <div id="pap">
-            <label for="averagePakage">Average Pakage <i>(lakh per anum)</i></label><br>
+            <label for="averagePakage">Average Package <i>(lakh per anum)</i></label><br>
             <input type="text" name="averagePakage" id="ap" autocomplete="off" required><br>
             </div>
             <div id="pcut">
@@ -149,7 +141,7 @@
                 <th><div class="arrow down"></div><div class="arrow up"></div>Website</th>
                 <th><div class="arrow down"></div><div class="arrow up"></div>Is Autonomus</th>
                 <th><div class="arrow down"></div><div class="arrow up"></div>Rank</th>
-                <th >Action</th>
+                <th>Action</th>
 
             </tr>
             </thead>
@@ -167,7 +159,16 @@
       <script src="../static/gui.js"></script>
       <script src="../static/script.js"></script>
       <script>
-          getColleges("college_id", "ASC")
+          getColleges("name", "ASC")
+          var radioButton=document.getElementById("order_asc")
+          radioButton.checked = true;
+          radioButton.addEventListener('change', function(){
+              sortCollege()
+          })
+          document.getElementById("order_desc").addEventListener('change', function(){
+              sortCollege()
+          })
+
       </script>
 
 </body>

@@ -54,6 +54,7 @@ function getCollegesById(id) {
 		document.getElementById("cutoff_edit").value = data[0][5];
 		document.getElementById("url_edit").value = data[0][6];
 		document.getElementById("autonomous_edit").value = data[0][7];
+		document.getElementById("ranking_edit").value= data[0][8]
 		document.getElementById("updatebtn").onclick= function(){ editCollege(data[0][0])}
 		stopLoading()
 	})
@@ -93,7 +94,7 @@ function addCollege(){
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
     var autonomous= document.getElementById("autonomous").value;
-    var ranking= 10;
+    var ranking= document.getElementById("ranking").value;
 
 	let data = {
 		college_id:college_id,
@@ -136,6 +137,7 @@ function editCollege(id){
     var cutoff= document.getElementById("cutoff_edit").value;
     var url= document.getElementById("url_edit").value;
     var autonomous= document.getElementById("autonomous_edit").value;
+	var ranking=document.getElementById("ranking_edit").value
 
 	let data = {
 		college_id:id,
@@ -146,6 +148,7 @@ function editCollege(id){
         cut_off: cutoff,
         website: url,
         autonomous: autonomous,
+		ranking:ranking
     };
 
 	fetch(`${api_url}colleges`, {

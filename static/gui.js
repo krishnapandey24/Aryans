@@ -16,6 +16,7 @@ const tip=document.querySelectorAll(".tipText");
 const next=document.querySelectorAll("#editForm>input");
 const loaderback=document.getElementById("loaderback");
 const loader=document.getElementById("loader");
+const options=["name","placement_ratio","average_pakage","cut_off","ranking"]
 
 
 function changeMode(){
@@ -83,7 +84,6 @@ function redirectToUpdate(rid){
          document.getElementById("autonomous_edit").value="";
          document.getElementById("ranking_edit").value="";
          getCollegesById(rid)
-
          ridd=rid;
          document.getElementById("updatebtn").onclick=function()
          {
@@ -141,6 +141,14 @@ function startLoading(){
 function stopLoading(){
 	loaderback.setAttribute('class',"abc");
 	loader.setAttribute('class',"abc");
+}
+
+function sortCollege(){
+    var sortOptions= document.getElementById("select");
+    var selectedOption= sortOptions.options[sortOptions.selectedIndex].text;
+    var sortASC = document.getElementById("order_asc").checked;
+    getColleges(options[sortOptions.selectedIndex],sortASC ? "ASC" : "DESC")
+    console.log(`selected option ${options[sortOptions.selectedIndex]} sortASC ${sortASC}`)
 }
 
 

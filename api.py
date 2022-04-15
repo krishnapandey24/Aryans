@@ -41,6 +41,15 @@ def get_data():
     cur.close()
     return jsonify(all_data)
 
+@app.route("/check", methods=["GET"])
+def get_data2():
+    conn = mysql.connection
+    cur = conn.cursor()
+    cur.execute(f"DESCRIBE colleges")
+    all_data = cur.fetchall()
+    cur.close()
+    return jsonify(all_data)
+
 # DELETING DATA
 @app.route('/colleges', methods=['DELETE'])
 def delete_record():
@@ -95,9 +104,8 @@ def update_record():
     cut_off = data["cut_off"]
     website = data["website"]
     autonomous = data["autonomous"]
-    # ranking = data["ranking"]
-
-    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_package}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}' WHERE college_id = '{college_id}'")
+    ranking = data["ranking"]
+    cur.execute(f"UPDATE colleges SET name = '{name}', address = '{address}', placement_ratio = '{placement_ratio}', average_pakage = '{average_package}', cut_off = '{cut_off}', website = '{website}', autonomous = '{autonomous}', ranking = '{ranking}' WHERE college_id = '{college_id}'")
     cur = conn.cursor()
     
     conn.commit()

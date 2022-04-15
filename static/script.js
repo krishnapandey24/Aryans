@@ -9,9 +9,9 @@ function loadData(records = []) {
 		table_data += `<td>${i+1}</td>`;
 		table_data += `<td>${records[i][1]}</td>`;
 		table_data += `<td>${records[i][2]}</td>`;
-		table_data += `<td>${records[i][3]}</td>`;
-		table_data += `<td>${records[i][4]}</td>`;
-		table_data += `<td>${records[i][5]}</td>`;
+		table_data += `<td>${records[i][3]+"%"}</td>`;
+		table_data += `<td>${records[i][4]+" LPA"}</td>`;
+		table_data += `<td>${records[i][5]+"%"}</td>`;
 		table_data += `<td>${records[i][6]}</td>`;
 		table_data += `<td>${records[i][7]==1 ? "Yes" : "No"}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;

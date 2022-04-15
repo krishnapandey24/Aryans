@@ -184,10 +184,6 @@ input:checked + .slider {
 .myTable tr:nth-child(even)> td{
     background-color: rgb(205, 205, 205);
 }
-/* .myTable tr:hover >td{
-    overflow: visible;
-    white-space: unset;
-} */
 
 .myTable td{
     box-sizing: content-box;
@@ -195,7 +191,6 @@ input:checked + .slider {
     overflow-x: hidden;
     text-overflow:ellipsis ;
     white-space: nowrap;
-   /* word-break:break-word; */
    background-color:rgb(230, 230, 230);/*rgb(230, 230, 230)*/
    padding: 12px 15px;
    border-bottom: 4px solid rgb(221, 221, 221);/*rgb(221, 221, 221)*/
@@ -293,6 +288,19 @@ input[type=text]{
   
 }
 input[type=text]:focus{
+    box-shadow:  0px 0px 10px 0px rgb(15, 140, 230);
+}
+input[type=number]{
+    cursor: pointer;
+    outline-color:rgb(15, 140, 230) ;
+    border: 0.5px solid transparent;
+    border-radius: 4px;
+    margin: .3vw 0;
+    height: 2vw;
+    padding: 5px 7px;
+  
+}
+input[type=number]:focus{
     box-shadow:  0px 0px 10px 0px rgb(15, 140, 230);
 }
 

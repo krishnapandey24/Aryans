@@ -390,6 +390,12 @@ input[type=text]:focus{
     top:30%;
     left:50%;
 }
+tr > td:hover {
+    overflow: visible;
+    white-space: unset;
+}
+
+
 .bubbles span {
     display: inline-block;
     vertical-align: middle;

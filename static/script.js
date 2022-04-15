@@ -6,14 +6,14 @@ function loadData(records = []) {
 	var table_data = "";
 	for(let i=0; i<records.length; i++) {
 		table_data += `<tr>`;
-		table_data += `<td>${records[i][0]}</td>`;
+		table_data += `<td>${i+1}</td>`;
 		table_data += `<td>${records[i][1]}</td>`;
 		table_data += `<td>${records[i][2]}</td>`;
 		table_data += `<td>${records[i][3]}</td>`;
 		table_data += `<td>${records[i][4]}</td>`;
 		table_data += `<td>${records[i][5]}</td>`;
 		table_data += `<td>${records[i][6]}</td>`;
-		table_data += `<td>${records[i][7]}</td>`;
+		table_data += `<td>${records[i][7]==1 ? "Yes" : "No"}</td>`;
 		table_data += `<td>${records[i][8]}</td>`;
 		table_data += `<td>`;
 		table_data += `<i class="fa fa-edit" style="font-size:28px;color:rgb(71, 105, 224)" onclick="redirectToUpdate(${records[i][0]})"></i>`;

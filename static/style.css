@@ -7,6 +7,11 @@
     font-family: Arial, Helvetica, sans-serif;
     cursor: default;
 }
+
+.actions{
+    margin-top: 2vh;
+}
+
 input[type=radio]{
     caret-color: transparent;
     cursor: pointer;
@@ -163,7 +168,7 @@ input:checked + .slider {
 }
 .myTable th{
     position: relative;
-    padding: 12px 30px;
+    padding: 12px 26px;
     padding-left: 25px;
     margin-left: 1vw;
 }

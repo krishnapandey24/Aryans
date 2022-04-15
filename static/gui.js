@@ -20,26 +20,24 @@ const options=["name","placement_ratio","average_package","cut_off","ranking"]
 function changeMode(){
    const dark=document.querySelector("#dark:checked")!= null;
    if(dark){
-       header.style.backgroundColor=" rgb(38, 65, 102)";
-       sideBar.style.backgroundColor="rgb(20,34,51)";
+       header.style.backgroundColor="rgb(23,27,35)";
+       sideBar.style.backgroundColor="rgb(23,27,35)";
        sideBar.style.boxShadow="none"
+       sideBar.style.border=" 2px solid rgba(252, 250, 250, 0.422)";
        content.style.backgroundColor=" rgba(25, 25, 25, 0.729)";
        content.style.border="2px solid rgb(148, 148, 148)";
        body.style.color="white";
-       title.style.textShadow="0px 2px 10px black";
-       body.style.background="rgb(10,22,35)";
-     
-       row.forEach(element => {
-        element.style.backgroundColor="rgb(20,30,46)";
-        element.style.borderBottom="4px solid rgba(25, 25, 25, 0.729)";
-    });
-     alter.forEach(element=>{
-         element.style.backgroundColor="rgb(20,30,46)";
-     });
-     tip.forEach(element => {
-         element.style.backgroundColor="rgb(26, 26, 26)";
-     });
-    logLogo.style.color="white";
+       body.style.background="rgb(12,16,23)";
+       var tbl = document.getElementById("myTable");
+       var numRows = tbl.rows.length;
+       for (var i = 1; i < numRows; i++) {
+           var cells = tbl.rows[i].getElementsByTagName('td');
+           for (var ic=0,it=cells.length;ic<it;ic++) {
+               cells[ic].style.backgroundColor="rgb(12,16,23)";
+               cells[ic].style.color="rgb(139,149,159)";
+           }
+       }
+    
         
    }
    else{
@@ -49,19 +47,16 @@ function changeMode(){
     content.style.backgroundColor=" rgba(221, 221, 221, 0.729)";
     content.style.border="2px solid rgba(252, 250, 250, 0.422)";
     body.style.color="black";
-    title.style.textShadow="0px 2px 10px rgb(91, 87, 87)";
     body.style.background="url("+"'../static/back.jpg'"+")";
-    row.forEach(element => {
-        element.style.backgroundColor="rgb(230, 230, 230)";
-        element.style.borderBottom="4px solid rgb(221, 221, 221)";
-    });
-    alter.forEach(element=>{
-        element.style.backgroundColor="rgb(205, 205, 205)";
-    });
-    tip.forEach(element => {
-        element.style.backgroundColor="rgb(103, 103, 103)";
-    });
-    logLogo.style.color="rgb(148, 148, 148)";
+    var tbl = document.getElementById("myTable");
+    var numRows = tbl.rows.length;
+    for (var i = 1; i < numRows; i++) {
+        var cells = tbl.rows[i].getElementsByTagName('td');
+        var even= i%2==0 ? true : false
+        for (var ic=0,it=cells.length;ic<it;ic++) {
+            cells[ic].style.backgroundColor=even ?"rgb(205, 205, 205)" : "rgb(230, 230, 230)";
+        }
+    }
    }
 }
 

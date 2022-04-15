@@ -24,6 +24,9 @@ function loadData(records = []) {
 	}
 	console.log("setting the tbody")
 	document.getElementById("tbody").innerHTML = table_data;
+	if(document.querySelector("#dark:checked")!= null){
+        changeMode()
+    }
 }
 
 function getColleges(sortBy,sortType) {

@@ -1,5 +1,5 @@
 // import fetch from 'node-fetch'
-const api_url = "http://127.0.0.1:5000/"
+const api_url = "https://aryans-college.herokuapp.com/"
 
 function loadData(records = []) {
 	console.log(records)

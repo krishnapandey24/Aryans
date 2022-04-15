@@ -68,21 +68,21 @@ function changeMode(){
 }
 
 let ridd;
- function redirectToUpdate(rid){
+function redirectToUpdate(rid){
          title.innerText="Update";
          table.style.display="none";
          eform.style.display="grid";
-        //  sort.style.display="none";
          content.style.overflowX="none";
 
-         document.getElementById("cname").value="";
-         document.getElementById("caddress").value="";
-         document.getElementById("cpr").value="";
-         document.getElementById("cap").value="";
-         document.getElementById("ccutoff").value="";
-         document.getElementById("curl").value="";
-         document.getElementById("cautonomous").value="";
-         document.getElementById("cranking").value="";
+         document.getElementById("name_edit").value="";
+         document.getElementById("address_edit").value="";
+         document.getElementById("pr_edit").value="";
+         document.getElementById("ap_edit").value="";
+         document.getElementById("cutoff_edit").value="";
+         document.getElementById("url_edit").value="";
+         document.getElementById("autonomous_edit").value="";
+         document.getElementById("ranking_edit").value="";
+         getCollegesById(rid)
 
          ridd=rid;
          document.getElementById("updatebtn").onclick=function()
@@ -94,7 +94,7 @@ let ridd;
 
  function deleteCollege(id,position){
     if(deleteData(id)){
-        document.getElementById("myTable").deleteRow(position)
+        document.getElementById("myTable").deleteRow(position+1)
     }
 
  }
@@ -125,8 +125,7 @@ let ridd;
     }
 }
  function redirectToTable(){
-
-   
+    getColleges("college_id","ASC")
     title.innerText="DashBoard";
     table.style.display="block";
     eform.style.display="none";

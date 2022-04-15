@@ -1,5 +1,3 @@
-
-
 const sideBar=document.getElementById("sideBar");
 const content=document.getElementById("content");
 const header=document.getElementById("header");
@@ -74,14 +72,13 @@ function redirectToUpdate(rid){
          table.style.display="none";
          eform.style.display="grid";
          content.style.overflowX="none";
-
+         sort.style.display="none";
          document.getElementById("name_edit").value="";
          document.getElementById("address_edit").value="";
          document.getElementById("pr_edit").value="";
          document.getElementById("ap_edit").value="";
          document.getElementById("cutoff_edit").value="";
          document.getElementById("url_edit").value="";
-         document.getElementById("autonomous_edit").value="";
          document.getElementById("ranking_edit").value="";
          getCollegesById(rid)
          ridd=rid;
@@ -100,15 +97,14 @@ function redirectToUpdate(rid){
  }
 
  function redirectToCreate(){
-    //title.innerText="Add Data";
+    console.log("createding")
+    title.innerText="Add Data";
+    console.log("done")
     table.style.display="none";
     cform.style.display="grid";
     eform.style.display="none";
-
-    // sort.style.display="none";
-
+    sort.style.display="none";
     content.style.overflowX="none";
-
     document.getElementById("collegeId").value="";
     document.getElementById("name").value="";
     document.getElementById("address").value="";
@@ -116,7 +112,7 @@ function redirectToUpdate(rid){
     document.getElementById("ap").value="";
     document.getElementById("cutoff").value="";
     document.getElementById("url").value="";
-    document.getElementById("autonomous").value="";
+    document.getElementById("autonomous_yes").checked=true;
     document.getElementById("ranking").value="";
 
     document.getElementById("addbtn").onclick=function()
@@ -125,8 +121,9 @@ function redirectToUpdate(rid){
     }
 }
  function redirectToTable(){
-    getColleges("college_id","ASC")
+    sortCollege()
     title.innerText="DashBoard";
+    sort.style.display="block";
     table.style.display="block";
     eform.style.display="none";
     cform.style.display="none";

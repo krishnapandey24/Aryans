@@ -42,6 +42,10 @@
             <option value="cutoff">Cutoff</option>
             <option value="rank">Rank</option>
         </select>
+        <label for="order"><b>Asc</b></label>
+        <input type="radio" name="oder" id="order_asc">
+        <label for="order"><b>Desc</b></label>
+        <input type="radio" name="oder" id="order_desc">
     </div>
     <div class="content" id="content">
         <div class="form" id="editForm" >
@@ -71,7 +75,12 @@
                 </div>
                 <div id="eauto">
                 <label for="autonomous">Autonomous</label><br>
-                <input type="text" name="autonomous" id="autonomous_edit" autocomplete="off" required><br>
+                <div class="autonomous_selection">
+                    <label for="autonomous"><b>Yes</b></label>
+                    <input type="radio" name="rautonomous" id="autonomous_yes">
+                    <label for="autonomous"><b>No</b></label>
+                    <input type="radio" name="rautonomous" id="autonomous_no">
+                </div>
                 </div>
                 <div id="erank">
                 <label for="rank">Rank</label><br>
@@ -113,7 +122,12 @@
             </div>
             <div id="pauto">
             <label for="autonomous">Autonomous</label><br>
-            <input type="text" name="autonomous" id="autonomous" autocomplete="off" required><br>
+            <div class="autonomous_selection">
+            <label for="autonomous"><b>Yes</b></label>
+            <input type="radio" name="rautonomous" id="autonomous_yes">
+            <label for="autonomous"><b>No</b></label>
+            <input type="radio" name="rautonomous" id="autonomous_no">
+            </div>
             </div>
             <div id="prank">
             <label for="rank">Rank</label><br>

@@ -53,9 +53,14 @@ function getCollegesById(id) {
 		document.getElementById("ap_edit").value = data[0][4];
 		document.getElementById("cutoff_edit").value = data[0][5];
 		document.getElementById("url_edit").value = data[0][6];
-		document.getElementById("autonomous_edit").value = data[0][7];
+		document.getElementById("autonomous_yes").checked = data[0][7]==1 ? true : false;
 		document.getElementById("ranking_edit").value= data[0][8]
 		document.getElementById("updatebtn").onclick= function(){ editCollege(data[0][0])}
+		if(data[0][7]==1){
+			document.getElementById("autonomous_yes").checked=true
+		}else{
+			document.getElementById("autonomous_no").checked=true
+		}
 		stopLoading()
 	})
 
@@ -93,7 +98,7 @@ function addCollege(){
     var aveargePackage= document.getElementById("ap").value;
     var cutoff= document.getElementById("cutoff").value;
     var url= document.getElementById("url").value;
-    var autonomous= document.getElementById("autonomous").value;
+    var autonomous= document.getElementById("autonomous_yes").checked ? 1 : 0;
     var ranking= document.getElementById("ranking").value;
 
 	let data = {
@@ -136,7 +141,7 @@ function editCollege(id){
     var aveargePackage= document.getElementById("ap_edit").value;
     var cutoff= document.getElementById("cutoff_edit").value;
     var url= document.getElementById("url_edit").value;
-    var autonomous= document.getElementById("autonomous_edit").value;
+    var autonomous= document.getElementById("autonomous_yes").checked ? 1 : 0;
 	var ranking=document.getElementById("ranking_edit").value
 
 	let data = {

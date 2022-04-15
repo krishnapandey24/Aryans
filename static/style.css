@@ -12,11 +12,17 @@
     margin-top: 2vh;
 }
 
+.autonomous_selection{
+    margin-top: 2vh;
+}
+
 input[type=radio]{
     caret-color: transparent;
     cursor: pointer;
     transform: scale(1.5);
+    margin-right: 5px;
 }
+
 a{
     cursor: pointer;
     color: rgb(61, 201, 236);

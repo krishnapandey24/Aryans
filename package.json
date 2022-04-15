@@ -4,7 +4,7 @@
   "description": "aryans project",
   "main": "script.js",
   "scripts": {
-    "test": "start"
+    "start": "node api.py"
   },
   "type": "module",
   "repository": {
